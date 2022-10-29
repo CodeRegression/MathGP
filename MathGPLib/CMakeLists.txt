@@ -10,10 +10,11 @@
 include_directories("../" "${LIBRARY_BASE}/NVLib" "${LIBRARY_BASE}/GeneticLib")
 
 # Create Library
-add_library(MathGPLib STATIC
-    ArgUtils.cpp
-    Candidate.cpp
-    CandidateFactory.cpp
-    Mutation.cpp
-    ScoreFinder.cpp
+add_library (MathGPLib STATIC
+	ArgUtils.cpp
+	Candidate.cpp
+	CandidateFactory.cpp
+	Mutation.cpp
+	ScoreFinder.cpp
 )
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+
+<class>
+
+<namespace>NVL_AI</namespace>
+<solution>MathGPLib</solution>
+<name>Node</name>
+<description>A base class for the node entity</description>
+
+<includes>
+    <include name="iostream" namespace="std" local="false" />
+</includes>
+
+<variables>
+    <variable type="int" name="id" code="10" />
+    <variable type="int" name="inputCount" code="10" />
+</variables>
+
+<constructors>
+
+    <!-- Main Constructor-->
+    <constructor type="auto" inline="true" />
+    
+</constructors>
+
+<methods>
+    
+    <!-- Retrieve the type of node -->
+    <method section="Getters" modifiers="virtual" access="public" return="string" name="GetType" description="Retrieves the type of node" inline="true" />
+
+    <!-- Retrieve the number of children-->
+    <method section="Getters" modifiers="virtual" access="public" return="int" name="GetChildCount" description="Retrieves the number of children" inline="true" />
+
+    <!-- Retrieve a string representation of the node in question -->
+    <method section="Getters" modifers="virtual" access="public" return="string" name="ToString" description="Retrieves a string representation of the node in question" inline="true" />
+
+    <!-- Perform the given evaluation -->
+    <method section="Evaluate" modifiers="virtual" access="public" return="double" name="Evaluate" description="Retrieves an evaluation of the current node" inline="true">
+        <parameter type="vector<double>&" name="params" description="Evaluate the incomming parameters to the application" />
+    </method>   
+
+    <!-- Perform clone functionality -->
+    <method section="Clone" modifiers="virtual" access="public" return="Node *" name="Clone" description="Clone the given node" />
+
+</methods>
+
+</class>
