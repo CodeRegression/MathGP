@@ -15,11 +15,10 @@ add_library (MathGPLib STATIC
 	Grammar/ConstantNode.cpp
 	Grammar/AddNode.cpp
 	Grammar/SubtractNode.cpp
+	Grammar/MultiplyNode.cpp
 	ArgUtils.cpp
 	Candidate.cpp
 	CandidateFactory.cpp
 	Mutation.cpp
 	ScoreFinder.cpp
-
 )
-

@@ -26,7 +26,9 @@ add_executable (MathGPTests
 	Tests/ConstantNode_Tests.cpp
 	Tests/AddNode_Tests.cpp
 	Tests/SubtractNode_Tests.cpp
+	Tests/MultiplyNode_Tests.cpp
 )
+
 
 
 
