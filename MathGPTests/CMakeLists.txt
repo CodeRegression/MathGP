@@ -23,7 +23,9 @@ set_target_properties(UnitTestLib PROPERTIES
 add_executable (MathGPTests
 	Tests/Example_Tests.cpp
 	Tests/LiteralNode_Tests.cpp
+	Tests/ConstantNode_Tests.cpp
 )
+
 
 # Add link libraries
 target_link_libraries(MathGPTests MathGPLib NVLib ${OpenCV_LIBS} UnitTestLib GTest::Main)

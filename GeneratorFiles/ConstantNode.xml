@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+
+<class base="LeafNode">
+
+<namespace>NVL_AI</namespace>
+<solution>MathGPLib</solution>
+<name>ConstantNode</name>
+<description>A node that returns a constant</description>
+
+<includes>
+    <include name="vector" namespace="std" local="false" />
+    <include name="iostream" namespace="std" local="false" />
+</includes>
+
+<variables>
+    <variable type="double" name="value" code="10" />
+</variables>
+
+<constructors>
+
+    <!-- Main Constructor -->
+    <constructor type="custom" inline="false">
+        <parameter type="int" name="id" description="An identifier for the node" />
+        <parameter type="int" name="outputCount" description="The number of output elements that we have" />
+        <parameter type="double" name="value" description="The index of the constant that is represented by this node" />
+    </constructor>
+
+</constructors>
+
+<methods>
+
+    <!-- virtual string GetType() = 0; -->
+    <method section="Getters" modifiers="virtual" access="public" return="string" name="GetType" description="Retrieve the type of node" inline="false" />
+
+    <!-- virtual string ToString() = 0; -->
+    <method section="Getters" modifiers="virtual" access="public" return="string" name="ToString" description="Retrieve the display name of the node" inline="false" />
+ 
+    <!-- virtual double Evaluate(vector<double>& params) = 0; -->
+    <method section="Evaluate" modifiers="virtual" access="public" return="double" name="Evaluate" description="Evaluate the node" inline="false">
+        <parameter type="vector<double>&" name="params" description="The input parameters of the given method" />
+    </method>    
+
+    <!-- virtual Node * Clone() = 0; -->
+    <method section="Clone" modifiers="virtual" access="public" return="Node *" name="Clone" description="Clone this node" inline="false" />
+
+</methods>
+
+<tests>
+    <test name="confirm_evaluate" description="Confirm correct operation of the evaluate functionality" exception="false" />
+    <test name="confirm_to_string" description="verify the ToString implementation" exception="false" />
+    <test name="confirm_clone" description="Verify the clone implementation" exception="false" />
+</tests> 
+
+</class>
