@@ -20,8 +20,9 @@ set_target_properties(UnitTestLib PROPERTIES
 )
 
 # Create the executable
-add_executable(MathGPTests
-    Tests/Example_Tests.cpp
+add_executable (MathGPTests
+	Tests/Example_Tests.cpp
+	Tests/LiteralNode_Tests.cpp
 )
 
 # Add link libraries

@@ -18,7 +18,7 @@ namespace NVL_AI
 	class LeafNode : public Node
 	{
 	public:
-		LeafNode(int id, int outputCount) : Node(id, outputCount) {}
+		LeafNode(int id, int inputCount) : Node(id, inputCount) {}
 		virtual int GetChildCount() { return 0; }
 	};
 }
