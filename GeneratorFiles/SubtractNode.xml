@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+
+<class base="BinaryNode">
+
+<namespace>NVL_AI</namespace>
+<solution>MathGPLib</solution>
+<name>SubtractNode</name>
+<description>A node representing an addition operation</description>
+
+<includes>
+    <include name="vector" namespace="std" local="false" />
+    <include name="iostream" namespace="std" local="false" />
+    <include name="BinaryNode.h" local="true" />
+</includes>
+
+<constructors>
+
+    <!-- Main Constructor -->
+    <constructor type="custom" inline="false">
+        <parameter type="int" name="id" description="An identifier for the node" />
+        <parameter type="int" name="inputCount" description="The number of input elements that we have" />
+    </constructor>
+
+</constructors>
+
+<methods>
+
+    <!-- virtual string GetType() = 0; -->
+    <method section="Getters" modifiers="virtual" access="public" return="string" name="GetType" description="Retrieve the type of node" inline="false" />
+
+    <!-- virtual string ToString() = 0; -->
+    <method section="Getters" modifiers="virtual" access="public" return="string" name="ToString" description="Retrieve the display name of the node" inline="false" />
+ 
+    <!-- virtual double Evaluate(vector<double>& params) = 0; -->
+    <method section="Evaluate" modifiers="virtual" access="public" return="double" name="Evaluate" description="Evaluate the node" inline="false">
+        <parameter type="vector<double>&" name="params" description="The input parameters of the given method" />
+    </method>    
+
+    <!-- virtual Node * Clone() = 0; -->
+    <method section="Clone" modifiers="virtual" access="public" return="Node *" name="Clone" description="Clone this node" inline="false" />
+
+</methods>
+
+<tests>
+    <test name="confirm_evaluate" description="Confirm correct operation of the evaluate functionality" exception="false" />
+    <test name="confirm_to_string" description="verify the ToString implementation" exception="false" />
+    <test name="confirm_clone" description="Verify the clone implementation" exception="false" />
+</tests> 
+
+</class>

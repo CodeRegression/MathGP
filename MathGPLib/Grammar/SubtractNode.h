@@ -1,5 +1,5 @@
 //--------------------------------------------------
-// A node that returns a constant
+// A node representing an addition operation
 //
 // @author: Wild Boar
 //
@@ -8,22 +8,19 @@
 
 #pragma once
 
+#include <sstream>
 #include <vector>
 #include <iostream>
 using namespace std;
 
-#include <NVLib/StringUtils.h>
-
-#include "LeafNode.h"
+#include "BinaryNode.h"
 
 namespace NVL_AI
 {
-	class ConstantNode : public LeafNode
+	class SubtractNode : public BinaryNode
 	{
-	private:
-		double _value;
 	public:
-		ConstantNode(int id, int inputCount, double value);
+		SubtractNode(int id, int inputCount);
 
 		virtual string GetType();
 		virtual string ToString();
@@ -31,7 +28,5 @@ namespace NVL_AI
 		virtual double Evaluate(vector<double>& params);
 
 		virtual Node * Clone(int id);
-
-		inline double& GetValue() { return _value; }
 	};
 }
