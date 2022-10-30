@@ -1,12 +1,12 @@
 //--------------------------------------------------
-// Implementation of class ConstantNode
+// Implementation of class AddNode
 //
 // @author: Wild Boar
 //
 // @date: 2022-10-30
 //--------------------------------------------------
 
-#include "ConstantNode.h"
+#include "AddNode.h"
 using namespace NVL_AI;
 
 //--------------------------------------------------
@@ -16,12 +16,11 @@ using namespace NVL_AI;
 /**
  * @brief Custom Constructor
  * @param id An identifier for the node
- * @param inputCount The number of input variables we are expecting
- * @param value The index of the constant that is represented by this node
+ * @param inputCount The number of input elements that we have
  */
-ConstantNode::ConstantNode(int id, int inputCount, double value) : LeafNode(id, inputCount), _value(value)
+AddNode::AddNode(int id, int inputCount) : BinaryNode(id, inputCount)
 {
-	// Extra implementation can come here
+	// Extra implementation can go here
 }
 
 //--------------------------------------------------
@@ -32,18 +31,20 @@ ConstantNode::ConstantNode(int id, int inputCount, double value) : LeafNode(id, 
  * @brief Retrieve the type of node
  * @return string Returns a string
  */
-string ConstantNode::GetType()
+string AddNode::GetType()
 {
-	return "ConstantNode";
+	return "AddNode";
 }
 
 /**
  * @brief Retrieve the display name of the node
  * @return string Returns a string
  */
-string ConstantNode::ToString()
+string AddNode::ToString()
 {
-	return NVLib::StringUtils::Int2String(_value);
+	auto result = stringstream();
+	result << "(" << GetChild1()->ToString() << " + " << GetChild2()->ToString() << ")";
+	return result.str();
 }
 
 //--------------------------------------------------
@@ -55,9 +56,11 @@ string ConstantNode::ToString()
  * @param params The input parameters of the given method
  * @return double Returns a double
  */
-double ConstantNode::Evaluate(vector<double>& params)
+double AddNode::Evaluate(vector<double>& params)
 {
-	return _value;
+	auto value1 = GetChild1()->Evaluate(params);
+	auto value2 = GetChild2()->Evaluate(params);
+	return value1 + value2;
 }
 
 //--------------------------------------------------
@@ -69,7 +72,7 @@ double ConstantNode::Evaluate(vector<double>& params)
  * @param id The identifier of the node that we are cloning
  * @return Node * Returns a Node *
  */
-Node * ConstantNode::Clone(int id)
+Node * AddNode::Clone(int id)
 {
-	return new ConstantNode(id, GetInputCount(), _value);
+	return new AddNode(id, GetInputCount());
 }

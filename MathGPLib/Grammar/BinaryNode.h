@@ -15,7 +15,7 @@ using namespace std;
 
 namespace NVL_AI
 {
-	class BinaryNode
+	class BinaryNode : public Node
 	{
 	private:
 		Node * _child1;

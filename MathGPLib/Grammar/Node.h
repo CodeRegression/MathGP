@@ -28,7 +28,7 @@ namespace NVL_AI
 			virtual string ToString() = 0;
 
 			virtual double Evaluate(vector<double>& params) = 0;
-			virtual Node * Clone() = 0;
+			virtual Node * Clone(int id) = 0;
 
 			inline int& GetId() { return _id; }
 			inline int& GetInputCount() { return _inputCount; }

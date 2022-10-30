@@ -30,7 +30,7 @@ namespace NVL_AI
 
 			virtual double Evaluate(vector<double>& params);
 
-			virtual Node * Clone();
+			virtual Node * Clone(int id);
 
 			inline double& GetValue() { return _value; }
 	};

@@ -67,9 +67,10 @@ double LiteralNode::Evaluate(vector<double>& params)
 
 /**
  * @brief Clone this node
+ * @param id The identifier of the clone node
  * @return Node * Returns a Node *
  */
-Node * LiteralNode::Clone()
+Node * LiteralNode::Clone(int id)
 {
-	return new LiteralNode(GetId(), GetInputCount(),_index);
+	return new LiteralNode(id, GetInputCount(), _index);
 }

@@ -1,5 +1,5 @@
 //--------------------------------------------------
-// A node that returns a literal
+// A node representing an addition operation
 //
 // @author: Wild Boar
 //
@@ -13,17 +13,14 @@
 #include <iostream>
 using namespace std;
 
-#include "LeafNode.h"
+#include "BinaryNode.h"
 
 namespace NVL_AI
 {
-	class LiteralNode : public LeafNode
+	class AddNode : public BinaryNode
 	{
-	private:
-		int _index;
-
 	public:
-		LiteralNode(int id, int inputCount, int index);
+		AddNode(int id, int outputCount);
 
 		virtual string GetType();
 		virtual string ToString();
@@ -31,7 +28,5 @@ namespace NVL_AI
 		virtual double Evaluate(vector<double>& params);
 
 		virtual Node * Clone(int id);
-
-		inline int& GetIndex() { return _index; }
 	};
 }

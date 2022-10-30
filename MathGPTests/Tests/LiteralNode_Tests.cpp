@@ -54,10 +54,10 @@ TEST(LiteralNode_Test, confirm_clone)
 
 	// Execute
 	auto node = LiteralNode(1, 4, 1);
-	auto cloneNode = node.Clone();
+	auto cloneNode = node.Clone(5);
 
 	// Confirm
-	ASSERT_EQ(node.GetId(), cloneNode->GetId());
+	ASSERT_EQ(cloneNode->GetId(), 5);
 	ASSERT_EQ(node.GetInputCount(), cloneNode->GetInputCount());
 	ASSERT_EQ(node.Evaluate(params), cloneNode->Evaluate(params));
 

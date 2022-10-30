@@ -13,6 +13,7 @@ include_directories("../" "${LIBRARY_BASE}/NVLib" "${LIBRARY_BASE}/GeneticLib")
 add_library (MathGPLib STATIC
 	Grammar/LiteralNode.cpp
 	Grammar/ConstantNode.cpp
+	Grammar/AddNode.cpp
 	ArgUtils.cpp
 	Candidate.cpp
 	CandidateFactory.cpp
