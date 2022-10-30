@@ -35,6 +35,13 @@ namespace NVL_AI
 
 		virtual int GetChildCount() { return 2; }
 
+		virtual Node * GetChild(int index) 
+		{
+			if (index == 0) return _child1;
+			else if (index == 1) return _child2;
+			else throw runtime_error("Invalid child index");
+		}
+
 		inline Node *& GetChild1() { return _child1; }
 		inline Node *& GetChild2() { return _child2; }
 

@@ -20,5 +20,6 @@ namespace NVL_AI
 	public:
 		LeafNode(int id, int inputCount) : Node(id, inputCount) {}
 		virtual int GetChildCount() { return 0; }
+		virtual Node * GetChild(int index) { throw runtime_error("Invalid child index"); }
 	};
 }

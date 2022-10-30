@@ -17,9 +17,9 @@ using namespace NVL_AI;
  * @brief Custom Constructor
  * @param tree The tree that we are traversing
  */
-BFTraversal::BFTraversal(Node * tree)
+BFTraversal::BFTraversal(Node * tree) : _tree(tree), _position(0)
 {
-	throw runtime_error("Not implemented");
+	_layer.push_back(tree);
 }
 
 //--------------------------------------------------
@@ -32,7 +32,9 @@ BFTraversal::BFTraversal(Node * tree)
  */
 Node * BFTraversal::Next()
 {
-	throw runtime_error("Not implemented");
+	if (_position >= _layer.size()) UpdateLayer();
+	if (_layer.size() == 0) return nullptr;
+	return _layer[_position++];
 }
 
 //--------------------------------------------------
@@ -44,5 +46,15 @@ Node * BFTraversal::Next()
  */
 void BFTraversal::UpdateLayer()
 {
-	throw runtime_error("Not implemented");
+	auto nextLayer = vector<Node *>();
+	
+	for (auto node : _layer) 
+	{
+		for (auto i = 0; i < node->GetChildCount(); i++) 
+		{
+			nextLayer.push_back(node->GetChild(i));
+		}
+	}
+
+	_layer = nextLayer; _position = 0;
 }
