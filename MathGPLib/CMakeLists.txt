@@ -19,6 +19,7 @@ add_library (MathGPLib STATIC
 	Grammar/DivideNode.cpp
 	Grammar/NegateNode.cpp
 	Grammar/InvertNode.cpp
+	Grammar/BFTraversal.cpp
 	ArgUtils.cpp
 	Candidate.cpp
 	CandidateFactory.cpp

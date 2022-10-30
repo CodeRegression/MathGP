@@ -30,7 +30,9 @@ add_executable (MathGPTests
 	Tests/DivideNode_Tests.cpp
 	Tests/NegateNode_Tests.cpp
 	Tests/InvertNode_Tests.cpp
+	Tests/BFTraversal_Tests.cpp
 )
+
 
 
 

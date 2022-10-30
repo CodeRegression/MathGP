@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<class>
+
+    <namespace>NVL_AI</namespace>
+    <solution>MathGPLib</solution>
+    <name>BFTraversal</name>
+    <description>A tool that allows for a breadthfirst traversal of a tree</description>
+
+    <includes>
+        <include name="iostream" namespace="std" local="false" />
+        <include name="Node.h" local="true" />
+    </includes>
+
+    <constructors>
+
+        <!-- Main Constructor -->
+        <constructor type="custom" inline="false">
+            <parameter type="Node *" name="tree" description="The tree that we are traversing" />
+        </constructor>
+
+    </constructors>
+
+    <variables>
+        <variable type="Node *" name="tree" code="00" />
+        <variable type="int" name="position" code="10" />
+        <variable type="vector&lt;Node *&gt;" name="layer" code="00" />
+    </variables>
+
+    <methods>
+
+        <!-- Get the next node -->
+        <method section="Next" access="public" return="Node *" name="Next" description="Retrieve the next node in the tree" inline="false" />
+
+        <!-- Update the layer -->
+        <method section="Update" access="private" return="void" name="UpdateLayer" description="Add the functionality to update the layer" inline="false" />
+
+    </methods>
+
+    <tests>
+        <test name="test_traversal" description="Confirm that the traversal is working correctly" exception="false" />
+    </tests>
+
+</class>
