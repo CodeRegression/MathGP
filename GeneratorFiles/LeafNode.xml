@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<class base="Node">
+
+<namespace>NVL_AI</namespace>
+<solution>MathGPLib</solution>
+<name>LeafNode</name>
+<description>A description of the node</description>
+
+<includes>
+    <include name="iostream" namespace="std" local="false" />
+    <include name="Node.h" local="true" />
+</includes>
+
+<constructors>
+
+    <constructor type="custom" inline="true">
+        <parameter type="int" name="id" description="The identifier that we are assigning the node" />
+        <parameter type="int" name="outputCount" description="The number of outputs I am adding" />    
+    </constructor>
+
+</constructors>
+
+<methods>
+    <method section="Getter" modifiers="virtual" access="public" return="int" name="GetChildCount" description="Retrieve the number of children" inline="true" />
+</methods>
+
+</class>
