@@ -28,7 +28,10 @@ add_executable (MathGPTests
 	Tests/SubtractNode_Tests.cpp
 	Tests/MultiplyNode_Tests.cpp
 	Tests/DivideNode_Tests.cpp
+	Tests/NegateNode_Tests.cpp
 )
+
+
 
 
 
