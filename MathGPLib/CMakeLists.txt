@@ -16,6 +16,7 @@ add_library (MathGPLib STATIC
 	Grammar/AddNode.cpp
 	Grammar/SubtractNode.cpp
 	Grammar/MultiplyNode.cpp
+	Grammar/DivideNode.cpp
 	ArgUtils.cpp
 	Candidate.cpp
 	CandidateFactory.cpp
