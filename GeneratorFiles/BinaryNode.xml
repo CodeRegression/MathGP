@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+
+<class>
+
+<namespace>NVL_AI</namespace>
+<solution>MathGPLib</solution>
+<name>BinaryNode</name>
+<description>A node that is a binary node</description>
+
+<includes>
+    <include name="iostream" namespace="std" local="false" />
+    <include name="Node.h" local="true" />
+</includes>
+
+<variables>
+    <variable type="Node *" name="child1" code="11" />
+    <variable type="Node *" name="child2" code="11" />
+</variables>
+
+<constructors>
+
+    <!-- Main Constructor -->
+    <constructor type="custom" inline="true">
+        <parameter type="int" name="id" description="The identifier that we are working with" />
+        <parameter type="int" name="inputCount" description="The number of input variables" />
+    </constructor>
+
+</constructors>
+
+<methods>
+
+    <!-- Retrieve thge child count-->
+    <method section="Getters" modifiers="virtual" access="public" return="int" name="GetChildCount" description="Retrieve the number of children that this node has" inline="true" />
+</methods>
+
+</class>
