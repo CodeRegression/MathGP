@@ -16,10 +16,9 @@ using namespace NVL_AI;
 /**
  * @brief Custom Constructor
  * @param id An identifier for the node
- * @param inputCount The number of input variables we are expecting
  * @param value The index of the constant that is represented by this node
  */
-ConstantNode::ConstantNode(int id, int inputCount, double value) : LeafNode(id, inputCount), _value(value)
+ConstantNode::ConstantNode(int id, double value) : LeafNode(id), _value(value)
 {
 	// Extra implementation can come here
 }
@@ -71,5 +70,5 @@ double ConstantNode::Evaluate(vector<double>& params)
  */
 Node * ConstantNode::Clone(int id)
 {
-	return new ConstantNode(id, GetInputCount(), _value);
+	return new ConstantNode(id, _value);
 }

@@ -16,22 +16,20 @@ namespace NVL_AI
 {
 	class Node
 	{
-		private:
-			int _id;
-			int _inputCount;
-		public:
-			Node(int id, int inputCount) :
-				_id(id), _inputCount(inputCount) {}
+	private:
+		int _id;
+	public:
+		Node(int id) : _id(id) {}
 
-			virtual string GetType() = 0;
-			virtual int GetChildCount() = 0;
-			virtual string ToString() = 0;
+		virtual string GetType() = 0;
+		virtual int GetChildCount() = 0;
+		virtual string ToString() = 0;
 
-			virtual double Evaluate(vector<double>& params) = 0;
-			virtual Node * Clone(int id) = 0;
-			virtual Node * GetChild(int index) = 0;
+		virtual double Evaluate(vector<double>& params) = 0;
+		virtual Node * Clone(int id) = 0;
+		virtual Node * GetChild(int index) = 0;
+		virtual void SetChild(int index, Node * node) = 0;
 
-			inline int& GetId() { return _id; }
-			inline int& GetInputCount() { return _inputCount; }
+		inline int& GetId() { return _id; }
 	};
 }

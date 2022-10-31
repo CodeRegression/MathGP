@@ -13,7 +13,7 @@ using namespace std;
 
 #include <MathGPLib/Grammar/RandomGenerator.h>
 
-namespace NVL_AI
+namespace NVL_Test
 {
 	class TestGenerator : public RandomGenerator
 	{

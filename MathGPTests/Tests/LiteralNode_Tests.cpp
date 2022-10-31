@@ -24,7 +24,7 @@ TEST(LiteralNode_Test, confirm_evaluate)
 	auto params = vector<double> { 1,2, 3, 4 };		
 
 	// Execute
-	auto node = LiteralNode(1, 4, 1);
+	auto node = LiteralNode(1, 1);
 	auto value = node.Evaluate(params);
 
 	// Confirm
@@ -37,7 +37,7 @@ TEST(LiteralNode_Test, confirm_evaluate)
 TEST(LiteralNode_Test, confirm_to_string)
 {
 	// Execute
-	auto node = LiteralNode(1, 4, 1);
+	auto node = LiteralNode(1, 1);
 	auto value = node.ToString();
 
 	// Confirm
@@ -53,12 +53,11 @@ TEST(LiteralNode_Test, confirm_clone)
 	auto params = vector<double> { 1,2, 3, 4 };		
 
 	// Execute
-	auto node = LiteralNode(1, 4, 1);
+	auto node = LiteralNode(1, 1);
 	auto cloneNode = node.Clone(5);
 
 	// Confirm
 	ASSERT_EQ(cloneNode->GetId(), 5);
-	ASSERT_EQ(node.GetInputCount(), cloneNode->GetInputCount());
 	ASSERT_EQ(node.Evaluate(params), cloneNode->Evaluate(params));
 
 	// Teardown

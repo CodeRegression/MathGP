@@ -16,9 +16,8 @@ using namespace NVL_AI;
 /**
  * @brief Custom Constructor
  * @param id An identifier for the node
- * @param inputCount The number of input elements that we have
  */
-DivideNode::DivideNode(int id, int inputCount) : BinaryNode(id, inputCount)
+DivideNode::DivideNode(int id) : BinaryNode(id)
 {
 	// Extra implementation can go here
 }
@@ -74,5 +73,5 @@ double DivideNode::Evaluate(vector<double>& params)
  */
 Node * DivideNode::Clone(int id)
 {
-	return new DivideNode(id, GetInputCount());
+	return new DivideNode(id);
 }

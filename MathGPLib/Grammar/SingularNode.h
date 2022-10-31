@@ -21,7 +21,7 @@ namespace NVL_AI
 		Node * _child;
 
 	public:
-		SingularNode(int id, int inputCount) : Node(id, inputCount) 
+		SingularNode(int id) : Node(id) 
 		{
 			_child = nullptr;
 		}
@@ -31,6 +31,12 @@ namespace NVL_AI
 		virtual Node * GetChild(int index) 
 		{
 			if (index == 0) return _child;
+			else throw runtime_error("Invalid child index");
+		}
+
+		virtual void SetChild(int index, Node * node) 
+		{
+			if (index == 0) _child = node;
 			else throw runtime_error("Invalid child index");
 		}
 

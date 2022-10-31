@@ -23,7 +23,7 @@ namespace NVL_AI
 	private:
 		double _value;
 	public:
-		ConstantNode(int id, int inputCount, double value);
+		ConstantNode(int id, double value);
 
 		virtual string GetType();
 		virtual string ToString();

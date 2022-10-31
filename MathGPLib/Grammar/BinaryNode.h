@@ -21,7 +21,7 @@ namespace NVL_AI
 		Node * _child1;
 		Node * _child2;
 	public:
-		BinaryNode(int id, int inputCount) : Node(id, inputCount)
+		BinaryNode(int id) : Node(id)
 		{
 			_child1 = nullptr;
 			_child2 = nullptr;
@@ -40,6 +40,13 @@ namespace NVL_AI
 			if (index == 0) return _child1;
 			else if (index == 1) return _child2;
 			else throw runtime_error("Invalid child index");
+		}
+
+		virtual void SetChild(int index, Node * node) 
+		{
+			if (index == 0) _child1 = node;
+			else if (index == 1) _child2 = node;
+			else throw runtime_error("Invalid child index");	
 		}
 
 		inline Node *& GetChild1() { return _child1; }

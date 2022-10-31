@@ -20,7 +20,7 @@ namespace NVL_AI
 	class MultiplyNode : public BinaryNode
 	{
 	public:
-		MultiplyNode(int id, int inputCount);
+		MultiplyNode(int id);
 
 		virtual string GetType();
 		virtual string ToString();

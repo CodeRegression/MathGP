@@ -23,7 +23,7 @@ namespace NVL_AI
 		int _index;
 
 	public:
-		LiteralNode(int id, int inputCount, int index);
+		LiteralNode(int id, int index);
 
 		virtual string GetType();
 		virtual string ToString();

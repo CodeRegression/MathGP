@@ -16,9 +16,8 @@ using namespace NVL_AI;
 /**
  * @brief Custom Constructor
  * @param id An identifier for the node
- * @param inputCount The number of input elements that we have
  */
-MultiplyNode::MultiplyNode(int id, int inputCount) : BinaryNode(id, inputCount)
+MultiplyNode::MultiplyNode(int id) : BinaryNode(id)
 {
 	// Extra implementation can go here
 }
@@ -74,5 +73,5 @@ double MultiplyNode::Evaluate(vector<double>& params)
  */
 Node * MultiplyNode::Clone(int id)
 {
-	return new MultiplyNode(id, GetInputCount());
+	return new MultiplyNode(id);
 }

@@ -16,9 +16,8 @@ using namespace NVL_AI;
 /**
  * @brief Custom Constructor
  * @param id An identifier for the node
- * @param inputCount The number of input elements that we have
  */
-NegateNode::NegateNode(int id, int inputCount) : SingularNode(id, inputCount)
+NegateNode::NegateNode(int id) : SingularNode(id)
 {
 	// Extra implementation can go here
 }
@@ -72,5 +71,5 @@ double NegateNode::Evaluate(vector<double>& params)
  */
 Node * NegateNode::Clone(int id)
 {
-	return new NegateNode(id, GetInputCount());
+	return new NegateNode(id);
 }

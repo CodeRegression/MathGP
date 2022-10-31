@@ -19,15 +19,14 @@ namespace NVL_AI
 {
 	class InvertNode : public SingularNode
 	{
+	public:
+		InvertNode(int id);
 
-		public:
-			InvertNode(int id, int inputCount);
+		virtual string GetType();
+		virtual string ToString();
 
-			virtual string GetType();
-			virtual string ToString();
+		virtual double Evaluate(vector<double>& params);
 
-			virtual double Evaluate(vector<double>& params);
-
-			virtual Node * Clone(int id);
+		virtual Node * Clone(int id);
 	};
 }

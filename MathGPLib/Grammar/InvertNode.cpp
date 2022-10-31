@@ -16,9 +16,8 @@ using namespace NVL_AI;
 /**
  * @brief Custom Constructor
  * @param id An identifier for the node
- * @param inputCount The number of input elements that we have
  */
-InvertNode::InvertNode(int id, int inputCount) : SingularNode(id, inputCount)
+InvertNode::InvertNode(int id) : SingularNode(id)
 {
 	// Extra implementation can go here
 }
@@ -72,5 +71,5 @@ double InvertNode::Evaluate(vector<double>& params)
  */
 Node * InvertNode::Clone(int id)
 {
-	return new InvertNode(id, GetInputCount());
+	return new InvertNode(id);
 }

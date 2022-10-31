@@ -16,10 +16,9 @@ using namespace NVL_AI;
 /**
  * @brief Custom Constructor
  * @param id An identifier for the node
- * @param inputCount The number of input elements we are expecting
  * @param index The index of the literal that we are using
  */
-LiteralNode::LiteralNode(int id, int inputCount, int index) : LeafNode(id, inputCount), _index(index)
+LiteralNode::LiteralNode(int id, int index) : LeafNode(id), _index(index)
 {
 	// Extra implementation can go here
 }
@@ -72,5 +71,5 @@ double LiteralNode::Evaluate(vector<double>& params)
  */
 Node * LiteralNode::Clone(int id)
 {
-	return new LiteralNode(id, GetInputCount(), _index);
+	return new LiteralNode(id, _index);
 }

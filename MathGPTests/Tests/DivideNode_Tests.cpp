@@ -25,9 +25,9 @@ TEST(DivideNode_Test, confirm_evaluate)
 	auto input = vector<double> { 4, 2 };
 
 	// Execute
-	auto divideNode = DivideNode(1, 2);
-	divideNode.SetChild1(new LiteralNode(2, 2, 0));
-	divideNode.SetChild2(new LiteralNode(3, 2, 1));
+	auto divideNode = DivideNode(1);
+	divideNode.SetChild1(new LiteralNode(2, 0));
+	divideNode.SetChild2(new LiteralNode(3, 1));
 	auto result = divideNode.Evaluate(input);
 
 	// Confirm
@@ -40,9 +40,9 @@ TEST(DivideNode_Test, confirm_evaluate)
 TEST(DivideNode_Test, confirm_to_string)
 {
 	// Execute
-	auto divideNode = DivideNode(1, 2);
-	divideNode.SetChild1(new LiteralNode(2, 2, 0));
-	divideNode.SetChild2(new LiteralNode(3, 2, 1));
+	auto divideNode = DivideNode(1);
+	divideNode.SetChild1(new LiteralNode(2, 0));
+	divideNode.SetChild2(new LiteralNode(3, 1));
 	auto value = divideNode.ToString();
 
 	// Confirm
@@ -58,14 +58,13 @@ TEST(DivideNode_Test, confirm_clone)
 	auto input = vector<double> { 2, 2 };
 
 	// Execute
-	auto divideNode = DivideNode(1, 2);
-	divideNode.SetChild1(new LiteralNode(2, 2, 0));
-	divideNode.SetChild2(new LiteralNode(3, 2, 1));
+	auto divideNode = DivideNode(1);
+	divideNode.SetChild1(new LiteralNode(2, 0));
+	divideNode.SetChild2(new LiteralNode(3, 1));
 	auto cloneNode = divideNode.Clone(5);
 
 	// Confirm
 	ASSERT_EQ(cloneNode->GetId(), 5);
-	ASSERT_EQ(cloneNode->GetInputCount(), 2);
 	ASSERT_EQ(((DivideNode *)cloneNode)->GetChild1(), nullptr);
 	ASSERT_EQ(((DivideNode *)cloneNode)->GetChild2(), nullptr);
 

@@ -18,8 +18,10 @@ namespace NVL_AI
 	class LeafNode : public Node
 	{
 	public:
-		LeafNode(int id, int inputCount) : Node(id, inputCount) {}
+		LeafNode(int id) : Node(id) {}
+		
 		virtual int GetChildCount() { return 0; }
 		virtual Node * GetChild(int index) { throw runtime_error("Invalid child index"); }
+		virtual void SetChild(int index, Node * node) { throw runtime_error("Cannot set a child on a leaf node"); }
 	};
 }

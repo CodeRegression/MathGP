@@ -25,8 +25,8 @@ TEST(NegateNode_Test, confirm_evaluate)
 	auto input = vector<double> { 4, 2 };
 
 	// Execute
-	auto negateNode = NegateNode(1, 2);
-	negateNode.SetChild(new LiteralNode(2, 2, 0));
+	auto negateNode = NegateNode(1);
+	negateNode.SetChild(new LiteralNode(2, 0));
 	auto result = negateNode.Evaluate(input);
 
 	// Confirm
@@ -39,8 +39,8 @@ TEST(NegateNode_Test, confirm_evaluate)
 TEST(NegateNode_Test, confirm_to_string)
 {
 	// Execute
-	auto negateNode = NegateNode(1, 2);
-	negateNode.SetChild(new LiteralNode(2, 2, 0));
+	auto negateNode = NegateNode(1);
+	negateNode.SetChild(new LiteralNode(2, 0));
 	auto value = negateNode.ToString();
 
 	// Confirm
@@ -56,13 +56,12 @@ TEST(NegateNode_Test, confirm_clone)
 	auto input = vector<double> { 2, 2 };
 
 	// Execute
-	auto negateNode = NegateNode(1, 2);
-	negateNode.SetChild(new LiteralNode(2, 2, 0));
+	auto negateNode = NegateNode(1);
+	negateNode.SetChild(new LiteralNode(2, 0));
 	auto cloneNode = negateNode.Clone(5);
 
 	// Confirm
 	ASSERT_EQ(cloneNode->GetId(), 5);
-	ASSERT_EQ(cloneNode->GetInputCount(), 2);
 	ASSERT_EQ(((NegateNode *)cloneNode)->GetChild(), nullptr);
 
 	// Teardown Logic

@@ -20,7 +20,7 @@ namespace NVL_AI
 	class DivideNode : public BinaryNode
 	{
 	public:
-		DivideNode(int id, int inputCount);
+		DivideNode(int id);
 
 		virtual string GetType();
 		virtual string ToString();

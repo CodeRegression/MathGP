@@ -20,7 +20,7 @@ namespace NVL_AI
 	class SubtractNode : public BinaryNode
 	{
 	public:
-		SubtractNode(int id, int inputCount);
+		SubtractNode(int id);
 
 		virtual string GetType();
 		virtual string ToString();

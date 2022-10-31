@@ -24,13 +24,13 @@ using namespace NVL_AI;
 TEST(BFTraversal_Test, test_traversal)
 {
 	// Setup
-	auto node_1 = AddNode(1, 2);
-	auto node_2 = new AddNode(2, 2);
-	auto node_3 = new NegateNode(3, 2);
-	auto node_4 = new ConstantNode(4, 2, 0.5);
-	auto node_5 = new ConstantNode(5, 2, 0.6);
-	auto node_6 = new NegateNode(6, 2);
-	auto node_7 = new ConstantNode(7, 2, 0.8);
+	auto node_1 = AddNode(1);
+	auto node_2 = new AddNode(2);
+	auto node_3 = new NegateNode(3);
+	auto node_4 = new ConstantNode(4, 0.5);
+	auto node_5 = new ConstantNode(5, 0.6);
+	auto node_6 = new NegateNode(6 );
+	auto node_7 = new ConstantNode(7, 0.8);
 
 	node_1.SetChild1(node_2); node_1.SetChild2(node_3);
 	node_2->SetChild1(node_4); node_2->SetChild2(node_5);

@@ -25,8 +25,8 @@ TEST(InvertNode_Test, confirm_evaluate)
 	auto input = vector<double> { 4, 2 };
 
 	// Execute
-	auto invertNode = InvertNode(1, 2);
-	invertNode.SetChild(new LiteralNode(2, 2, 0));
+	auto invertNode = InvertNode(1);
+	invertNode.SetChild(new LiteralNode(2, 0));
 	auto result = invertNode.Evaluate(input);
 
 	// Confirm
@@ -39,8 +39,8 @@ TEST(InvertNode_Test, confirm_evaluate)
 TEST(InvertNode_Test, confirm_to_string)
 {
 	// Execute
-	auto invertNode = InvertNode(1, 2);
-	invertNode.SetChild(new LiteralNode(2, 2, 0));
+	auto invertNode = InvertNode(1);
+	invertNode.SetChild(new LiteralNode(2, 0));
 	auto value = invertNode.ToString();
 
 	// Confirm
@@ -56,13 +56,12 @@ TEST(InvertNode_Test, confirm_clone)
 	auto input = vector<double> { 2, 2 };
 
 	// Execute
-	auto invertNode = InvertNode(1, 2);
-	invertNode.SetChild(new LiteralNode(2, 2, 0));
+	auto invertNode = InvertNode(1);
+	invertNode.SetChild(new LiteralNode(2, 0));
 	auto cloneNode = invertNode.Clone(5);
 
 	// Confirm
 	ASSERT_EQ(cloneNode->GetId(), 5);
-	ASSERT_EQ(cloneNode->GetInputCount(), 2);
 	ASSERT_EQ(((InvertNode *)cloneNode)->GetChild(), nullptr);
 
 	// Teardown Logic

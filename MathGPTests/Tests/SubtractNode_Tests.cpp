@@ -25,9 +25,9 @@ TEST(SubtractNode_Test, confirm_evaluate)
 	auto input = vector<double> { 2, 3 };
 
 	// Execute
-	auto subtractNode = SubtractNode(1, 2);
-	subtractNode.SetChild1(new LiteralNode(2, 2, 0));
-	subtractNode.SetChild2(new LiteralNode(3, 2, 1));
+	auto subtractNode = SubtractNode(1);
+	subtractNode.SetChild1(new LiteralNode(2, 0));
+	subtractNode.SetChild2(new LiteralNode(3, 1));
 	auto result = subtractNode.Evaluate(input);
 
 	// Confirm
@@ -40,9 +40,9 @@ TEST(SubtractNode_Test, confirm_evaluate)
 TEST(SubtractNode_Test, confirm_to_string)
 {
 	// Execute
-	auto subtractNode = SubtractNode(1, 2);
-	subtractNode.SetChild1(new LiteralNode(2, 2, 0));
-	subtractNode.SetChild2(new LiteralNode(3, 2, 1));
+	auto subtractNode = SubtractNode(1);
+	subtractNode.SetChild1(new LiteralNode(2, 0));
+	subtractNode.SetChild2(new LiteralNode(3, 1));
 	auto value = subtractNode.ToString();
 
 	// Confirm
@@ -58,14 +58,13 @@ TEST(SubtractNode_Test, confirm_clone)
 	auto input = vector<double> { 2, 2 };
 
 	// Execute
-	auto subtractNode = SubtractNode(1, 2);
-	subtractNode.SetChild1(new LiteralNode(2, 2, 0));
-	subtractNode.SetChild2(new LiteralNode(3, 2, 1));
+	auto subtractNode = SubtractNode(1);
+	subtractNode.SetChild1(new LiteralNode(2, 0));
+	subtractNode.SetChild2(new LiteralNode(3, 1));
 	auto cloneNode = subtractNode.Clone(5);
 
 	// Confirm
 	ASSERT_EQ(cloneNode->GetId(), 5);
-	ASSERT_EQ(cloneNode->GetInputCount(), 2);
 	ASSERT_EQ(((SubtractNode *)cloneNode)->GetChild1(), nullptr);
 	ASSERT_EQ(((SubtractNode *)cloneNode)->GetChild2(), nullptr);
 

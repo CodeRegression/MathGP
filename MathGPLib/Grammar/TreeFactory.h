@@ -13,6 +13,8 @@ using namespace std;
 
 #include <opencv2/opencv.hpp>
 
+#include <NVLib/Model/Range.h>
+
 #include "RandomGenerator.h"
 #include "AddNode.h"
 #include "ConstantNode.h"
@@ -29,9 +31,11 @@ namespace NVL_AI
 	{
 	private:
 		RandomGenerator * _generator;
-
+		int _depthLimit;
+		int _inputCount;
+		NVLib::Range<int> * _constantRange;
 	public:
-		TreeFactory(RandomGenerator * generator);
+		TreeFactory(RandomGenerator * generator, int depthLimit, int inputCount, NVLib::Range<int>* constantRange);
 		~TreeFactory();
 
 		NVL_AI::Node * GetRandomTree(int depthLimit);

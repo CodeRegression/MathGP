@@ -20,7 +20,7 @@ namespace NVL_AI
 	class AddNode : public BinaryNode
 	{
 	public:
-		AddNode(int id, int outputCount);
+		AddNode(int id);
 
 		virtual string GetType();
 		virtual string ToString();

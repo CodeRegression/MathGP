@@ -25,9 +25,9 @@ TEST(MultiplyNode_Test, confirm_evaluate)
 	auto input = vector<double> { 2, 3 };
 
 	// Execute
-	auto multiplyNode = MultiplyNode(1, 2);
-	multiplyNode.SetChild1(new LiteralNode(2, 2, 0));
-	multiplyNode.SetChild2(new LiteralNode(3, 2, 1));
+	auto multiplyNode = MultiplyNode(1);
+	multiplyNode.SetChild1(new LiteralNode(2, 0));
+	multiplyNode.SetChild2(new LiteralNode(3, 1));
 	auto result = multiplyNode.Evaluate(input);
 
 	// Confirm
@@ -40,9 +40,9 @@ TEST(MultiplyNode_Test, confirm_evaluate)
 TEST(MultiplyNode_Test, confirm_to_string)
 {
 	// Execute
-	auto multiplyNode = MultiplyNode(1, 2);
-	multiplyNode.SetChild1(new LiteralNode(2, 2, 0));
-	multiplyNode.SetChild2(new LiteralNode(3, 2, 1));
+	auto multiplyNode = MultiplyNode(1);
+	multiplyNode.SetChild1(new LiteralNode(2, 0));
+	multiplyNode.SetChild2(new LiteralNode(3, 1));
 	auto value = multiplyNode.ToString();
 
 	// Confirm
@@ -58,14 +58,13 @@ TEST(MultiplyNode_Test, confirm_clone)
 	auto input = vector<double> { 2, 2 };
 
 	// Execute
-	auto multiplyNode = MultiplyNode(1, 2);
-	multiplyNode.SetChild1(new LiteralNode(2, 2, 0));
-	multiplyNode.SetChild2(new LiteralNode(3, 2, 1));
+	auto multiplyNode = MultiplyNode(1);
+	multiplyNode.SetChild1(new LiteralNode(2, 0));
+	multiplyNode.SetChild2(new LiteralNode(3, 1));
 	auto cloneNode = multiplyNode.Clone(5);
 
 	// Confirm
 	ASSERT_EQ(cloneNode->GetId(), 5);
-	ASSERT_EQ(cloneNode->GetInputCount(), 2);
 	ASSERT_EQ(((MultiplyNode *)cloneNode)->GetChild1(), nullptr);
 	ASSERT_EQ(((MultiplyNode *)cloneNode)->GetChild2(), nullptr);
 

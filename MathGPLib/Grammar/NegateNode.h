@@ -20,7 +20,7 @@ namespace NVL_AI
 	class NegateNode : public SingularNode
 	{
 	public:
-		NegateNode(int id, int inputCount);
+		NegateNode(int id);
 
 		virtual string GetType();
 		virtual string ToString();

@@ -22,11 +22,11 @@ using namespace NVL_AI;
  */
 TEST(TreeFactory_Test, test_generation)
 {
-	FAIL() << "Not implemented";
-
 	// Setup
+	auto generator = NVL_Test::TestGenerator( vector<double> {3,3,3,2,1,5,3,1,2,0,1,2} );
 
 	// Execute
+	//auto tree = NVL_AI
 
 	// Confirm
 

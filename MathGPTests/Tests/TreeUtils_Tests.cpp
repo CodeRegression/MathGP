@@ -25,13 +25,13 @@ using namespace NVL_AI;
 TEST(TreeUtils_Test, test_code_generation)
 {
 	// Setup: Expression Tree
-	auto node_1 = AddNode(1, 4);
-	auto node_2 = new SubtractNode(2, 4);
-	auto node_3 = new MultiplyNode(3, 4);
-	auto node_4 = new LiteralNode(4, 2, 0);
-	auto node_5 = new LiteralNode(5, 2, 1);
-	auto node_6 = new LiteralNode(6, 2, 2);
-	auto node_7 = new LiteralNode(7, 2, 3);
+	auto node_1 = AddNode(1);
+	auto node_2 = new SubtractNode(2);
+	auto node_3 = new MultiplyNode(3);
+	auto node_4 = new LiteralNode(4, 0);
+	auto node_5 = new LiteralNode(5, 1);
+	auto node_6 = new LiteralNode(6, 2);
+	auto node_7 = new LiteralNode(7, 3);
 
 	node_1.SetChild1(node_2); node_1.SetChild2(node_3);
 	node_2->SetChild1(node_4); node_2->SetChild2(node_5);
@@ -57,13 +57,13 @@ TEST(TreeUtils_Test, test_code_generation)
 TEST(TreeUtils_Test, test_evaluation)
 {
 	// Setup: Expression Tree
-	auto node_1 = AddNode(1, 4);
-	auto node_2 = new SubtractNode(2, 4);
-	auto node_3 = new MultiplyNode(3, 4);
-	auto node_4 = new LiteralNode(4, 2, 0);
-	auto node_5 = new LiteralNode(5, 2, 1);
-	auto node_6 = new LiteralNode(6, 2, 2);
-	auto node_7 = new LiteralNode(7, 2, 3);
+	auto node_1 = AddNode(1);
+	auto node_2 = new SubtractNode(2);
+	auto node_3 = new MultiplyNode(3);
+	auto node_4 = new LiteralNode(4, 0);
+	auto node_5 = new LiteralNode(5, 1);
+	auto node_6 = new LiteralNode(6, 2);
+	auto node_7 = new LiteralNode(7, 3);
 
 	node_1.SetChild1(node_2); node_1.SetChild2(node_3);
 	node_2->SetChild1(node_4); node_2->SetChild2(node_5);

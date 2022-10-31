@@ -16,9 +16,8 @@ using namespace NVL_AI;
 /**
  * @brief Custom Constructor
  * @param id An identifier for the node
- * @param inputCount The number of input elements that we have
  */
-SubtractNode::SubtractNode(int id, int inputCount) : BinaryNode(id, inputCount)
+SubtractNode::SubtractNode(int id) : BinaryNode(id)
 {
 	// Extract implementation codes here
 }
@@ -74,5 +73,5 @@ double SubtractNode::Evaluate(vector<double>& params)
  */
 Node * SubtractNode::Clone(int id)
 {
-	return new SubtractNode(id, GetInputCount());
+	return new SubtractNode(id);
 }
