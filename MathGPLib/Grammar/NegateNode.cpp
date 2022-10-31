@@ -73,3 +73,16 @@ Node * NegateNode::Clone(int id)
 {
 	return new NegateNode(id);
 }
+
+//--------------------------------------------------
+// Update Code
+//--------------------------------------------------
+
+/**
+ * @brief The code that we are updating
+ * @param code The code that we are adding 
+ */
+void NegateNode::UpdateCode(vector<double>& code) 
+{
+	code.push_back(2); code.push_back(1);
+}

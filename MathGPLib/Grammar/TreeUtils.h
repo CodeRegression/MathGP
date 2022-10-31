@@ -21,5 +21,7 @@ namespace NVL_AI
 	public:
 		static string GetCode(Node * tree);
 		static double Evaluate(Node * tree, vector<double>& params);
+		static void SavePopulation(ostream& writer, vector<Node *>& population);
+		static void LoadPopulation(istream& reader, vector<Node *>& population);
 	};
 }

@@ -73,3 +73,16 @@ Node * LiteralNode::Clone(int id)
 {
 	return new LiteralNode(id, _index);
 }
+
+//--------------------------------------------------
+// Update Code
+//--------------------------------------------------
+
+/**
+ * @brief The code that we are updating
+ * @param code The code that we are adding 
+ */
+void LiteralNode::UpdateCode(vector<double>& code) 
+{
+	code.push_back(1); code.push_back(2);
+}

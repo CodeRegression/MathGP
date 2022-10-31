@@ -75,3 +75,16 @@ Node * MultiplyNode::Clone(int id)
 {
 	return new MultiplyNode(id);
 }
+
+//--------------------------------------------------
+// Update Code
+//--------------------------------------------------
+
+/**
+ * @brief The code that we are updating
+ * @param code The code that we are adding 
+ */
+void MultiplyNode::UpdateCode(vector<double>& code) 
+{
+	code.push_back(5); code.push_back(3);
+}

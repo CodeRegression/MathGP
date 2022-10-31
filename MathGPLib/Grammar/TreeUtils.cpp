@@ -44,3 +44,27 @@ double TreeUtils::Evaluate(Node * tree, vector<double>& params)
 {
 	return tree->Evaluate(params);
 }
+
+//--------------------------------------------------
+// Persistence
+//--------------------------------------------------
+
+/**
+ * @brief Save a tree populate to a writer
+ * @param writer The writer that we are using 
+ * @param population The population that we are saving
+ */
+void TreeUtils::SavePopulation(ostream& writer, vector<Node *>& population) 
+{
+	throw runtime_error("Not Implemented");
+}
+
+/**
+ * @brief Load a tree population from a writer
+ * @param reader The reader that we are using 
+ * @param population The population that we have generated
+ */
+void TreeUtils::LoadPopulation(istream& reader, vector<Node *>& population) 
+{
+	throw runtime_error("Not Implemented");
+}

@@ -73,3 +73,16 @@ Node * InvertNode::Clone(int id)
 {
 	return new InvertNode(id);
 }
+
+//--------------------------------------------------
+// Update Code
+//--------------------------------------------------
+
+/**
+ * @brief The code that we are updating
+ * @param code The code that we are adding 
+ */
+void InvertNode::UpdateCode(vector<double>& code) 
+{
+	code.push_back(2); code.push_back(2);
+}

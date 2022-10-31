@@ -75,3 +75,16 @@ Node * DivideNode::Clone(int id)
 {
 	return new DivideNode(id);
 }
+
+//--------------------------------------------------
+// Update Code
+//--------------------------------------------------
+
+/**
+ * @brief The code that we are updating
+ * @param code The code that we are adding 
+ */
+void DivideNode::UpdateCode(vector<double>& code) 
+{
+	code.push_back(5); code.push_back(4);
+}

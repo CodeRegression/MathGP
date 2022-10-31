@@ -78,3 +78,22 @@ TEST(TreeUtils_Test, test_evaluation)
 	// Confirm
 	ASSERT_EQ(actual, 1);
 }
+
+/**
+ * @brief Add persistence functionality
+ */
+TEST(TreeUtils_Test, test_persistence) 
+{
+	// Create a population of random nodes
+
+	// Extract the code strings
+
+	// "Save" the population to a writer
+
+	// Clear the current population
+
+	// "Load" the population from a reader
+
+	// Verify that all the code strings are still the same
+
+}

@@ -75,3 +75,16 @@ Node * AddNode::Clone(int id)
 {
 	return new AddNode(id);
 }
+
+//--------------------------------------------------
+// Update Code
+//--------------------------------------------------
+
+/**
+ * @brief The code that we are updating
+ * @param code The code that we are adding 
+ */
+void AddNode::UpdateCode(vector<double>& code) 
+{
+	code.push_back(5); code.push_back(1);
+}

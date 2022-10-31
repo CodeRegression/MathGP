@@ -25,12 +25,14 @@ namespace NVL_AI
 	public:
 		LiteralNode(int id, int index);
 
-		virtual string GetType();
-		virtual string ToString();
+		virtual string GetType() override;
+		virtual string ToString() override;
 
-		virtual double Evaluate(vector<double>& params);
+		virtual double Evaluate(vector<double>& params) override;
 
-		virtual Node * Clone(int id);
+		virtual Node * Clone(int id) override;
+
+		virtual void UpdateCode(vector<double>& code) override;
 
 		inline int& GetIndex() { return _index; }
 	};

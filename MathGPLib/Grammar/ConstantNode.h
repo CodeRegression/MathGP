@@ -32,6 +32,8 @@ namespace NVL_AI
 
 		virtual Node * Clone(int id);
 
-		inline double& GetValue() { return _value; }
+		virtual void UpdateCode(vector<double>& code) override;
+
+		inline double& GetValue() { return _value; }		
 	};
 }
