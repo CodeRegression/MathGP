@@ -38,13 +38,13 @@ namespace NVL_AI
 		TreeFactory(RandomGenerator * generator, int depthLimit, int inputCount, NVLib::Range<int>* constantRange);
 		~TreeFactory();
 
-		NVL_AI::Node * GetRandomTree(int depthLimit);
+		NVL_AI::Node * GetRandomTree();
 		NVL_AI::Node* Breed(NVL_AI::Node * mother, NVL_AI::Node * father);
 	private:
-		NVL_AI::Node* GetRandomLeafNode();
-		NVL_AI::Node * GetRandomBinaryNode();
-		NVL_AI::Node * GetRandomSingularNode();
-		NVL_AI::Node * GetRandomNode(int index);
+		NVL_AI::Node * GetRandomNode(int typeIndex, int id);
+		NVL_AI::Node * GetRandomLeafNode(int id);
+		NVL_AI::Node * GetRandomBinaryNode(int id);
+		NVL_AI::Node * GetRandomSingularNode(int id);
 		int GetNodeType(const vector<Vec2i>& weights);
 	};
 }

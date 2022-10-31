@@ -22,15 +22,22 @@ using namespace NVL_AI;
  */
 TEST(TreeFactory_Test, test_generation)
 {
-	// Setup
-	auto generator = NVL_Test::TestGenerator( vector<double> {3,3,3,2,1,5,3,1,2,0,1,2} );
+	// Setup: Main Players
+	auto generator = new NVL_Test::TestGenerator( vector<double> { 3, 3, 3, 2, 1, 5, 3, 1, 2, 0, 1, 2 } );
+	auto factory = NVL_AI::TreeFactory(generator, 3, 3, new NVLib::Range<int>(0, 5));
+
+	// Defines the expected result
+	auto expected = string("(((p[1] + p[2]) - p[0]) * 5)");
 
 	// Execute
-	//auto tree = NVL_AI
+	auto tree = factory.GetRandomTree();
+	auto actual = tree->ToString();
 
 	// Confirm
+	ASSERT_EQ(actual, expected);
 
 	// Teardown
+	delete tree;
 }
 
 /**
