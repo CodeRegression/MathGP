@@ -86,7 +86,59 @@ NVL_AI::Node * TreeFactory::GetRandomTree()
  */
 NVL_AI::Node* TreeFactory::Breed(Node * mother, Node * father)
 {
-	throw runtime_error("Not implemented");
+	// Create a variable to hold the id counter
+	auto id = 0;
+
+	// Create the parsers
+	auto motherParser = BFTraversal(mother);
+	auto fatherParser = BFTraversal(father);
+
+	// Setup the level vectors
+	auto current = vector<NVL_AI::Node *>(); auto next = vector<NVL_AI::Node *>();
+
+	// Create the root node
+	auto root_1 = motherParser.Next();
+	auto root_2 = fatherParser.Next();
+	auto rootSelectId = _generator->Get(0, 1);
+	auto root = rootSelectId == 0 ? root_1->Clone(id++) : root_2->Clone(id++);
+	current.push_back(root);
+
+	// Add children until there are none to add
+	while (current.size() > 0) 
+	{
+		for (auto i = 0; i < current.size(); i++) 
+		{
+			auto node = current[i];
+
+			for (auto childId = 0; childId < node->GetChildCount(); childId++) 
+			{
+				// Get the next nodes in the parse list
+				auto node_1 = motherParser.Next(); auto node_2 = fatherParser.Next();
+
+				// Generate the next nodes
+				Node * newNode = nullptr;
+				if (node_1 == nullptr && node_2 != nullptr) newNode = node_2->Clone(id++);
+				else if (node_1 != nullptr && node_2 == nullptr) newNode = node_1->Clone(id++);
+				else if (node_1 != nullptr && node_2 != nullptr) 
+				{
+					auto selectId = _generator->Get(0, 1);
+					newNode = selectId == 0 ? node_1->Clone(id++) : node_2->Clone(id++);
+				}
+				else newNode = GetRandomLeafNode(id);	
+				
+				// Update the child
+				node->SetChild(childId, newNode); next.push_back(newNode);
+			}
+		}
+
+		// Update the current
+		current.clear();
+		for (auto node : next) current.push_back(node);
+		next.clear();
+	}
+
+	// return the result
+	return root;
 }
 
 //--------------------------------------------------

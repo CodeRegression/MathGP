@@ -15,6 +15,7 @@ using namespace std;
 
 #include <NVLib/Model/Range.h>
 
+#include "BFTraversal.h"
 #include "RandomGenerator.h"
 #include "AddNode.h"
 #include "ConstantNode.h"

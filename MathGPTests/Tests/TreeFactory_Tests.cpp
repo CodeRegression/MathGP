@@ -52,11 +52,11 @@ TEST(TreeFactory_Test, test_generation)
 TEST(TreeFactory_Test, test_breeding)
 {
 	// Setup: Mother
-	auto mother = GetTree( vector<double> { 5, 1, 1, 1, 5, 5, 3, 1, 2, 0, 2, 1, 1, 2, 1 } );
+	auto mother = GetTree( vector<double> { 5, 1, 1, 1, 5, 5, 3, 1, 2, 0, 2, 1, 2, 1 } );
 	auto motherCode = mother->ToString();
 
 	// Setup: Father
-	auto father = GetTree( vector<double> { 5, 2, 1, 2, 0, 5, 1, 2, 2, 1, 2, 1, 1, 2, 1 } );
+	auto father = GetTree( vector<double> { 5, 2, 1, 2, 0, 5, 1, 2, 2, 1, 2, 1, 2, 1 } );
 	auto fatherCode = father->ToString();
 
 	// Execute
@@ -66,7 +66,7 @@ TEST(TreeFactory_Test, test_breeding)
 	// Confirm
 	ASSERT_EQ(motherCode, "(5 + (p[0] * (-1 * p[1])))");
 	ASSERT_EQ(fatherCode, "(p[0] - ((1.0 / p[1]) + p[1]))");
-	ASSERT_EQ(childCode, "(p[0] + ((1.0 / p[1]) * (-1 * 5))");
+	ASSERT_EQ(childCode, "(p[0] + ((1.0 / p[1]) * (-1 * 5)))");
 
 	// Teardown
 	delete mother; delete father; delete child;
