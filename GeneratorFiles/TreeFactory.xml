@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<class terminator="true">
+
+    <namespace>NVL_AI</namespace>
+    <solution>MathGPLib</solution>
+    <name>TreeFactory</name>
+    <description>A factory for the generation of trees</description>
+
+    <includes>
+        <include name="iostream" namespace="std" local="false" />
+        <include name="opencv2/opencv.hpp" namespace="cv" local="false" />
+        <include name="RandomGenerator.h" local="true" />
+        <include name="AddNode.h" local="true" />
+        <include name="ConstantNode.h" local="true" />
+        <include name="DivideNode.h" local="true" />
+        <include name="InvertNode.h" local="true" />
+        <include name="LiteralNode.h" local="true" />
+        <include name="MultiplyNode.h" local="true" />
+        <include name="NegateNode.h" local="true" />
+        <include name="SubtractNode.h" local="true" />
+    </includes>
+
+    <variables>
+        <variable type="RandomGenerator *" name="generator" code="00" />
+    </variables>
+
+    <constructors>
+
+        <constructor type="custom" inline="false">
+            <parameter type="RandomGenerator" name="generator" description="A random generator for resolving trees" />
+        </constructor>
+
+    </constructors>
+
+
+    <methods>
+
+        <!-- Generate a Random Tree -->
+        <method section="Create" access="public" return="Node *" name="GetRandomTree" description="Retrieve a randomly generated tree" inline="false">
+            <parameter type="int" name="depthLimit" description="The depth limit of the associated tree" />
+        </method>    
+
+        <!-- Perform Breeding -->
+        <method section="Breed" access="public" return="Node*" name="Breed" description="Performs the breeding operation" inline="false">
+            <parameter type="Node *" name="mother" description="The given mother node" />
+            <parameter type="Node *" name="father" description="The given father node" />
+        </method>    
+
+        <!-- Generate a random leaf -->
+        <method section="Helper" access="private" return="Node*" name="GetRandomLeafNode" description="Retrieve a random leaf node" inline="false" />
+
+        <!-- Generate a random binary node -->
+        <method section="Helper" access="private" return="Node *" name="GetRandomBinaryNode" description="Retrieve a random binary node" inline="false" />
+
+        <!-- Generate a random singular node -->
+        <method section="Helper" access="private" return="Node *" name="GetRandomSingularNode" description="Retrieve a random singular node" inline="false" />
+
+        <!-- Generate a node type -->
+        <method section="Helper" access="private" return="int" name="GetNodeType" description="Retrieve the node type" inline="false">
+            <parameter type="const vector<Vec2i>&" name="weights" description="A set of node types and the weight of that node type" />
+        </method>    
+
+    </methods>
+
+    <tests>
+        <test name="test_generation" description="Test the generation of a random" exception="false" />
+        <test name="test_breeding" description="Test the breeding operation" exception="false" />
+    </tests>
+
+</class>

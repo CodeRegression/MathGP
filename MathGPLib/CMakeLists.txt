@@ -21,6 +21,8 @@ add_library (MathGPLib STATIC
 	Grammar/InvertNode.cpp
 	Grammar/BFTraversal.cpp
 	Grammar/TreeUtils.cpp
+	Grammar/RandomGenerator.cpp
+	Grammar/TreeFactory.cpp
 	ArgUtils.cpp
 	Candidate.cpp
 	CandidateFactory.cpp

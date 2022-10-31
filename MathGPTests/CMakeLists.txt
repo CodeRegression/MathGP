@@ -32,18 +32,8 @@ add_executable (MathGPTests
 	Tests/InvertNode_Tests.cpp
 	Tests/BFTraversal_Tests.cpp
 	Tests/TreeUtils_Tests.cpp
+	Tests/TreeFactory_Tests.cpp
 )
-
-
-
-
-
-
-
-
-
-
-
 
 # Add link libraries
 target_link_libraries(MathGPTests MathGPLib NVLib ${OpenCV_LIBS} UnitTestLib GTest::Main)

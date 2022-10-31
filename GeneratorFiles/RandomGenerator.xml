@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<class>
+
+    <namespace>NVL_AI</namespace>
+    <solution>MathGPLib</solution>
+    <name>RandomGenerator</name>
+    <description>A random generator (that allows for random numbers to be swapped out during unit testing)</description>
+
+    <includes>
+        <include name="iostream" namespace="std" local="false" />
+        <include name="NVLib/RandomUtils.h" local="false" />
+    </includes>
+
+    <constructors>
+
+        <!-- Main Constructor -->
+        <constructor type="empty" inline="false" />
+
+    </constructors>
+
+    <methods>
+
+        <!-- Initialize -->
+        <method section="Initializer" modifiers="virtual" access="public" return="void" name="Initializer" description="An initializer for setting up the random generator" inline="false" />
+
+        <!-- Get -->
+       <method section="Generate" modifiers="virtual" access="public" return="int" name="Get" description="Retrieve the next random number" inline="false">
+            <parameter type="int" name="min" description="The minimum value inclusive" />
+            <parameter type="int" name="max" description="The maximum value inclusive" />
+       </method>      
+
+    </methods>
+
+</class>
