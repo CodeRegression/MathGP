@@ -84,7 +84,7 @@ Node * AddNode::Clone(int id)
  * @brief The code that we are updating
  * @param code The code that we are adding 
  */
-void AddNode::UpdateCode(vector<double>& code) 
+void AddNode::UpdateEncoding(vector<double>& code) 
 {
 	code.push_back(5); code.push_back(1);
 }

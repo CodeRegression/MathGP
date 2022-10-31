@@ -31,7 +31,7 @@ namespace NVL_AI
 		virtual Node * Clone(int id) = 0;
 		virtual Node * GetChild(int index) = 0;
 		virtual void SetChild(int index, Node * node) = 0;
-		virtual void UpdateCode(vector<double>& code) = 0;
+		virtual void UpdateEncoding(vector<double>& code) = 0;
 
 		inline int& GetId() { return _id; }
 		inline Node * GetParent() { return _parent; }

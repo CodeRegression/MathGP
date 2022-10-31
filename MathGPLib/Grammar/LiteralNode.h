@@ -32,7 +32,7 @@ namespace NVL_AI
 
 		virtual Node * Clone(int id) override;
 
-		virtual void UpdateCode(vector<double>& code) override;
+		virtual void UpdateEncoding(vector<double>& code) override;
 
 		inline int& GetIndex() { return _index; }
 	};

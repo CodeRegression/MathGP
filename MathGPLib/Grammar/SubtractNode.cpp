@@ -84,7 +84,7 @@ Node * SubtractNode::Clone(int id)
  * @brief The code that we are updating
  * @param code The code that we are adding 
  */
-void SubtractNode::UpdateCode(vector<double>& code) 
+void SubtractNode::UpdateEncoding(vector<double>& code) 
 {
 	code.push_back(5); code.push_back(2);
 }

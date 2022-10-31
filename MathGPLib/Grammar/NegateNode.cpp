@@ -82,7 +82,7 @@ Node * NegateNode::Clone(int id)
  * @brief The code that we are updating
  * @param code The code that we are adding 
  */
-void NegateNode::UpdateCode(vector<double>& code) 
+void NegateNode::UpdateEncoding(vector<double>& code) 
 {
 	code.push_back(2); code.push_back(1);
 }

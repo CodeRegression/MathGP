@@ -46,6 +46,42 @@ double TreeUtils::Evaluate(Node * tree, vector<double>& params)
 }
 
 //--------------------------------------------------
+// Encoding Helpers
+//--------------------------------------------------
+
+/**
+ * @brief Retrieve the encodings that make up a tree
+ * @param tree The tree that we are getting the encodings for
+ * @param encoding The encodings that we are using
+ */
+void TreeUtils::GetTreeEncoding(Node * tree, vector<double>& encoding) 
+{
+	auto traversal = BFTraversal(tree); encoding.clear(); Node * node = nullptr;
+	
+	do 
+	{
+		node = traversal.Next();
+		if (node != nullptr) node->UpdateEncoding(encoding);
+	} 
+	while (node != nullptr);
+}
+
+/**
+ * @brief Build a given tree from encodings
+ * @param encoding The encoding that we are getting for the tree
+ * @param depthLimit The depth limit of the tree
+ * @param inputCount The input count of the tree
+ * @param constantRange The constant range of the tree
+ * @return The tree that we have generated
+ */
+NVL_AI::Node * TreeUtils::BuildTreeFromEncoding(const vector<double>& encoding, int depthLimit, int inputCount, NVLib::Range<int>* constantRange) 
+{
+	auto encoder = new TreeEncoder(encoding);
+	auto factory = TreeFactory(encoder, depthLimit, inputCount, constantRange);
+	return factory.GetRandomTree();
+}
+
+//--------------------------------------------------
 // Persistence
 //--------------------------------------------------
 

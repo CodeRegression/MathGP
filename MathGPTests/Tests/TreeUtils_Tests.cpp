@@ -8,6 +8,7 @@
 
 #include <gtest/gtest.h>
 
+#include <MathGPLib/Grammar/TreeFactory.h>
 #include <MathGPLib/Grammar/AddNode.h>
 #include <MathGPLib/Grammar/SubtractNode.h>
 #include <MathGPLib/Grammar/MultiplyNode.h>
@@ -80,10 +81,37 @@ TEST(TreeUtils_Test, test_evaluation)
 }
 
 /**
+ * @brief Add the logic to test the encoding functionality
+ */
+TEST(TreeUtils_Test, test_encoding) 
+{
+	// Create a random tree
+	auto generator = new RandomGenerator();
+	auto factory = TreeFactory(generator, 3, 3, new NVLib::Range(0, 5));
+	auto tree = factory.GetRandomTree();
+
+	// Retrieve the code + encoding for the tree
+	auto expected = TreeUtils::GetCode(tree);
+	auto encoding = vector<double>(); TreeUtils::GetTreeEncoding(tree, encoding);
+
+	// Delete the tree
+	delete tree;
+
+	// Rebuild the tree
+	tree = TreeUtils::BuildTreeFromEncoding(encoding, 30, 3, new NVLib::Range(0, 5));
+
+	// Confirm that the code of the new tree matches
+	auto actual = TreeUtils::GetCode(tree);
+	ASSERT_EQ(expected, actual);
+}
+
+/**
  * @brief Add persistence functionality
  */
 TEST(TreeUtils_Test, test_persistence) 
 {
+	FAIL() << "Not Implemented";
+
 	// Create a population of random nodes
 
 	// Extract the code strings

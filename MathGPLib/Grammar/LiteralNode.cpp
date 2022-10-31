@@ -82,7 +82,7 @@ Node * LiteralNode::Clone(int id)
  * @brief The code that we are updating
  * @param code The code that we are adding 
  */
-void LiteralNode::UpdateCode(vector<double>& code) 
+void LiteralNode::UpdateEncoding(vector<double>& code) 
 {
 	code.push_back(1); code.push_back(2);
 }

@@ -84,7 +84,7 @@ Node * DivideNode::Clone(int id)
  * @brief The code that we are updating
  * @param code The code that we are adding 
  */
-void DivideNode::UpdateCode(vector<double>& code) 
+void DivideNode::UpdateEncoding(vector<double>& code) 
 {
 	code.push_back(5); code.push_back(4);
 }

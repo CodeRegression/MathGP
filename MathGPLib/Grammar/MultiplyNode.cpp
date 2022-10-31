@@ -84,7 +84,7 @@ Node * MultiplyNode::Clone(int id)
  * @brief The code that we are updating
  * @param code The code that we are adding 
  */
-void MultiplyNode::UpdateCode(vector<double>& code) 
+void MultiplyNode::UpdateEncoding(vector<double>& code) 
 {
 	code.push_back(5); code.push_back(3);
 }

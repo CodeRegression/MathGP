@@ -81,7 +81,7 @@ Node * ConstantNode::Clone(int id)
  * @brief Add the code to the system 
  * @param code The code that we are adding
  */
-void ConstantNode::UpdateCode(vector<double>& code) 
+void ConstantNode::UpdateEncoding(vector<double>& code) 
 {
 	code.push_back(1); code.push_back(1); code.push_back(_value);
 }

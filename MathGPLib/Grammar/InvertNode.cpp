@@ -82,7 +82,7 @@ Node * InvertNode::Clone(int id)
  * @brief The code that we are updating
  * @param code The code that we are adding 
  */
-void InvertNode::UpdateCode(vector<double>& code) 
+void InvertNode::UpdateEncoding(vector<double>& code) 
 {
 	code.push_back(2); code.push_back(2);
 }
