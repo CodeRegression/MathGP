@@ -41,11 +41,13 @@ namespace NVL_AI
 
 		NVL_AI::Node * GetRandomTree();
 		NVL_AI::Node* Breed(NVL_AI::Node * mother, NVL_AI::Node * father);
+		NVL_AI::Node * Mutate(NVL_AI::Node * tree, double threshold);
 	private:
 		NVL_AI::Node * GetRandomNode(int typeIndex, int id);
 		NVL_AI::Node * GetRandomLeafNode(int id);
 		NVL_AI::Node * GetRandomBinaryNode(int id);
 		NVL_AI::Node * GetRandomSingularNode(int id);
 		int GetNodeType(const vector<Vec2i>& weights);
+		int GetNodeTypeId(NVL_AI::Node * node);
 	};
 }

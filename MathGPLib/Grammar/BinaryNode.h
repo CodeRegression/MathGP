@@ -44,15 +44,15 @@ namespace NVL_AI
 
 		virtual void SetChild(int index, Node * node) 
 		{
-			if (index == 0) _child1 = node;
-			else if (index == 1) _child2 = node;
+			if (index == 0) { _child1 = UpdateChild(node, 0); }
+			else if (index == 1) { _child2 = UpdateChild(node, 1); }
 			else throw runtime_error("Invalid child index");	
 		}
 
-		inline Node *& GetChild1() { return _child1; }
-		inline Node *& GetChild2() { return _child2; }
+		inline Node * GetChild1() { return _child1; }
+		inline Node * GetChild2() { return _child2; }
 
-		inline void SetChild1(Node * value) { _child1 = value; }
-		inline void SetChild2(Node * value) { _child2 = value; }
+		inline void SetChild1(Node * value) { _child1 = UpdateChild(value, 0); }
+		inline void SetChild2(Node * value) { _child2 = UpdateChild(value, 1); }
 	};
 }

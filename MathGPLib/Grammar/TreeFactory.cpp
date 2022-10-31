@@ -146,6 +146,62 @@ NVL_AI::Node* TreeFactory::Breed(Node * mother, Node * father)
 //--------------------------------------------------
 
 /**
+ * @brief Add the functionality to mutate
+ * @param tree The tree that we are mutating
+ * @param threshold The threshold for triggering the mutate
+ * @return The resultant mutated tree
+ */
+NVL_AI::Node * TreeFactory::Mutate(NVL_AI::Node * tree, double threshold) 
+{
+	// Should we mutate
+	auto limit = (int)round(100 * threshold);
+	auto spin = _generator->Get(0, 100);
+	if (spin > limit) return tree;
+
+	// How big is the tree
+	auto traverse = BFTraversal(tree); 
+	auto nodes = vector<Node *>(); NVL_AI::Node * node = traverse.Next(); nodes.push_back(node);
+	while (node != nullptr) 
+	{ 
+		node = traverse.Next(); 
+		nodes.push_back(node); 
+	}
+
+	// Select the node to mutate
+	auto nodeId = _generator->Get(0, nodes.size() - 1);
+	node = nodes[nodeId];
+
+	// Get the replacement node
+	auto nodeTypeId = GetNodeTypeId(node);
+	auto newNode = GetRandomNode(nodeTypeId, node->GetId());
+	for (auto i = 0; i < node->GetChildCount(); i++) 
+	{
+		newNode->SetChild(i, node->GetChild(i));
+		node->SetChild(i, nullptr);
+	}
+
+	// Perform the replacement
+	if (node->GetParent() == nullptr) 
+	{
+		delete tree;
+		return newNode;
+	}
+	else 
+	{
+		auto parent = node->GetParent();
+		auto childId = node->GetChildId();
+		parent->SetChild(childId, newNode); 
+		delete node;
+		
+		return tree;
+	}
+}
+
+//--------------------------------------------------
+// Helpers
+//--------------------------------------------------
+
+/**
  * @brief Retrieve a random generated node
  * @param typeIndex The index of the type of node that we are getting
  * @param id The identifier to assign to nodes
@@ -231,4 +287,24 @@ int TreeFactory::GetNodeType(const vector<Vec2i>& weights)
 
 	auto lastIndex = weights.size() - 1;
 	return weights[lastIndex][0];
+}
+
+/**
+ * @brief Retrieve the type of node that we are dealing with
+ * @param node The node that we are working with
+ * @return int The node type id
+ */
+int TreeFactory::GetNodeTypeId(NVL_AI::Node * node) 
+{
+	auto nodeType = node->GetType();
+	
+	if (nodeType == "AddNode") return 3;
+	else if (nodeType == "SubtractNode") return 3;
+	else if (nodeType == "MultiplyNode") return 3;
+	else if (nodeType == "DivideNode") return 3;
+	else if (nodeType == "NegateNode") return 2;
+	else if (nodeType == "InvertNode") return 2;
+	else if (nodeType == "ConstantNode") return 1;
+	else if (nodeType == "LiteralNode") return 1;
+	else throw runtime_error("Unknown node type: " + nodeType); 
 }

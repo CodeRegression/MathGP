@@ -18,6 +18,7 @@ using namespace NVL_AI;
 //--------------------------------------------------
 NVL_AI::Node * GetTree(const vector<double>& code);
 NVL_AI::Node * Breed(NVL_AI::Node * mother, NVL_AI::Node * father);
+NVL_AI::Node * Mutate(NVL_AI::Node * tree, const vector<double>& code);
 
 //--------------------------------------------------
 // Test Methods
@@ -72,6 +73,40 @@ TEST(TreeFactory_Test, test_breeding)
 	delete mother; delete father; delete child;
 }
 
+/**
+ * @brief Test that the mutation functionality is happening as expected
+ */
+TEST(TreeFactory_Test, test_mutation) 
+{
+	// Test 1
+	auto tree_1 = GetTree( vector<double> { 5, 1, 5, 2, 1, 2, 0, 1, 2, 1, 2, 1, 2, 2} );
+	ASSERT_EQ(tree_1->ToString(), "((p[1] - (-1 * p[2])) + p[0])");
+	auto mtree_1 = Mutate(tree_1, vector<double> { 66 } );
+	ASSERT_EQ(mtree_1->ToString(), "((p[1] - (-1 * p[2])) + p[0])");
+	delete mtree_1;
+
+	// Test 2
+	auto tree_2 = GetTree( vector<double> { 5, 1, 5, 2, 1, 2, 0, 1, 2, 1, 2, 1, 2, 2} );
+	ASSERT_EQ(tree_2->ToString(), "((p[1] - (-1 * p[2])) + p[0])");
+	auto mtree_2 = Mutate(tree_2, vector<double> { 10, 0, 3 } );
+	ASSERT_EQ(mtree_2->ToString(), "((p[1] - (-1 * p[2])) * p[0])");
+	delete mtree_2;
+
+	// Test 3
+	auto tree_3 = GetTree( vector<double> { 5, 1, 5, 2, 1, 2, 0, 1, 2, 1, 2, 1, 2, 2} );
+	ASSERT_EQ(tree_3->ToString(), "((p[1] - (-1 * p[2])) + p[0])");
+	auto mtree_3 = Mutate(tree_3, vector<double> { 10, 2, 2, 1 } );
+	ASSERT_EQ(mtree_3->ToString(), "((p[1] - (-1 * p[2])) + p[1])");
+	delete mtree_3;
+
+	// Test 4
+	auto tree_4 = GetTree( vector<double> { 5, 1, 5, 2, 1, 2, 0, 1, 2, 1, 2, 1, 2, 2} );
+	ASSERT_EQ(tree_4->ToString(), "((p[1] - (-1 * p[2])) + p[0])");
+	auto mtree_4 = Mutate(tree_4, vector<double> { 10, 4, 2 } );
+	ASSERT_EQ(mtree_4->ToString(), "((p[1] - (1.0 / p[2])) + p[0])");
+	delete mtree_4;
+}
+
 //--------------------------------------------------
 // Utility Methods
 //--------------------------------------------------
@@ -100,4 +135,17 @@ NVL_AI::Node * Breed(NVL_AI::Node * mother, NVL_AI::Node * father)
 	auto generator = new NVL_Test::TestGenerator(code);
 	auto factory = NVL_AI::TreeFactory(generator, 3, 3, new NVLib::Range<int>(0, 5));
 	return factory.Breed(mother, father);
+}
+
+/**
+ * @brief Add the logic to perform the mutation
+ * @param tree The tree that we are mutating
+ * @param code The code of the mutation
+ * @return NVL_AI::Node The resultant tree
+ */
+NVL_AI::Node * Mutate(NVL_AI::Node * tree, const vector<double>& code) 
+{
+	auto generator = new NVL_Test::TestGenerator(code);
+	auto factory = NVL_AI::TreeFactory(generator, 3, 3, new NVLib::Range<int>(0, 5));
+	return factory.Mutate(tree, 0.4);
 }
