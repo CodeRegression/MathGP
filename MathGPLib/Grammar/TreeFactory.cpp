@@ -45,7 +45,7 @@ NVL_AI::Node * TreeFactory::GetRandomTree()
 	auto current = vector<Node *>(); auto next = vector<Node *>(); int level = 0; int id = 1;
 
 	// Build the root tree
-	auto firstNodeType = GetNodeType(vector<Vec2i> { Vec2i(2, 1), Vec2i(3, 8)} );
+	auto firstNodeType = GetNodeType(vector<Vec2i> { Vec2i(2, 1), Vec2i(3, 9)} );
 	auto root = firstNodeType == 1 ? GetRandomSingularNode(id++) : GetRandomBinaryNode(id++);
 	current.push_back(root);
 
@@ -56,9 +56,9 @@ NVL_AI::Node * TreeFactory::GetRandomTree()
 		{
 			auto node = current[i];
 
-			for (auto childId = 0; childId < node->GetChildCount(); i++) 
+			for (auto childId = 0; childId < node->GetChildCount(); childId++) 
 			{
-				auto weights = (_depthLimit < level++) ? vector<Vec2i> { Vec2i(1, 1), Vec2i(2,2), Vec2i(3, 7)} : vector<Vec2i> { Vec2i(1,1)};
+				auto weights = (_depthLimit >= level++) ? vector<Vec2i> { Vec2i(1, 1), Vec2i(2,2), Vec2i(3, 7)} : vector<Vec2i> { Vec2i(1,1)};
 				auto nodeTypeId = GetNodeType(weights);
 				auto child = GetRandomNode(nodeTypeId, id++);
 				node->SetChild(childId, child); next.push_back(child);
@@ -66,7 +66,7 @@ NVL_AI::Node * TreeFactory::GetRandomTree()
 		}
 
 		current.clear(); 
-		for (auto i = 0; i < next.size(); i++) current[i] = next[i]; 
+		for (auto i = 0; i < next.size(); i++) current.push_back(next[i]); 
 		next.clear();
 	}
 	
@@ -114,18 +114,19 @@ NVL_AI::Node * TreeFactory::GetRandomNode(int typeIndex, int id)
  */
 NVL_AI::Node * TreeFactory::GetRandomLeafNode(int id)
 {
-	auto nodeId = _generator->Get(0, 1);
+	auto nodeId = _generator->Get(1, 2);
 
-	if (nodeId == 0) 
+	if (nodeId == 1) 
 	{
 		auto value = _generator->Get(_constantRange->GetMin(), _constantRange->GetMax());
 		return new ConstantNode(id, value);
 	}
-	else 
+	else if (nodeId == 2)
 	{
 		auto index = _generator->Get(0, _inputCount);
 		return new LiteralNode(id, index);
 	}
+	else throw runtime_error("Unknown Leaf Node");
 }
 
 /**
@@ -135,11 +136,12 @@ NVL_AI::Node * TreeFactory::GetRandomLeafNode(int id)
  */
 NVL_AI::Node * TreeFactory::GetRandomBinaryNode(int id)
 {
-	auto nodeId = _generator->Get(0, 3);
-	if (nodeId == 0) return new AddNode(id);
-	else if (nodeId == 1) return new SubtractNode(id);
-	else if (nodeId == 2) return new MultiplyNode(id);
-	else return new DivideNode(id);
+	auto nodeId = _generator->Get(1, 4);
+	if (nodeId == 1) return new AddNode(id);
+	else if (nodeId == 2) return new SubtractNode(id);
+	else if (nodeId == 3) return new MultiplyNode(id);
+	else if (nodeId == 4) return new DivideNode(id);
+	else throw runtime_error("Unknown Binary node");
 }
 
 /**
@@ -149,9 +151,10 @@ NVL_AI::Node * TreeFactory::GetRandomBinaryNode(int id)
  */
 NVL_AI::Node * TreeFactory::GetRandomSingularNode(int id)
 {
-	auto nodeId = _generator->Get(0, 3);
-	if (nodeId == 0) return new NegateNode(id);
-	else return new InvertNode(id);
+	auto nodeId = _generator->Get(1, 2);
+	if (nodeId == 1) return new NegateNode(id);
+	else if (nodeId == 2) return new InvertNode(id);
+	else throw runtime_error("Uknown singular node");
 }
 
 /**
@@ -171,7 +174,7 @@ int TreeFactory::GetNodeType(const vector<Vec2i>& weights)
 	for (auto& option : weights) 
 	{	
 		currentValue += option[1];
-		if (currentValue > value) return option[0];
+		if (currentValue >= value) return option[0];
 	}
 
 	auto lastIndex = weights.size() - 1;

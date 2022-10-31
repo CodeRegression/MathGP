@@ -24,6 +24,12 @@ namespace NVL_Test
 		TestGenerator(const vector<double>& values) : _values(values), _position(0) {} 
 
 		virtual void Initializer() override {}
-		virtual int Get(int min, int max) override { return _values[_position++]; }
+		
+		virtual int Get(int min, int max) override 
+		{ 
+			auto result = _values[_position++];
+			if (result < min || result > max) throw runtime_error("Value is out of range");
+			return result; 
+		}
 	};
 }

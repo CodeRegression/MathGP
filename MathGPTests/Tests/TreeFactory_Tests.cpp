@@ -23,7 +23,7 @@ using namespace NVL_AI;
 TEST(TreeFactory_Test, test_generation)
 {
 	// Setup: Main Players
-	auto generator = new NVL_Test::TestGenerator( vector<double> { 3, 3, 3, 2, 1, 5, 3, 1, 2, 0, 1, 2 } );
+	auto generator = new NVL_Test::TestGenerator( vector<double> { 3, 3, 5, 2, 1, 1, 5, 6, 1, 1, 2, 0, 2, 1, 2, 2 } );
 	auto factory = NVL_AI::TreeFactory(generator, 3, 3, new NVLib::Range<int>(0, 5));
 
 	// Defines the expected result
