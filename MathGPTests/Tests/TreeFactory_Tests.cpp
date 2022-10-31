@@ -107,6 +107,29 @@ TEST(TreeFactory_Test, test_mutation)
 	delete mtree_4;
 }
 
+/**
+ * @brief Verify that the algorithm still works if the tree is a "breed" one that involves cloning
+ */
+TEST(TreeFactory_Test, test_clone_mutation) 
+{
+	// Setup: Mother
+	auto mother = GetTree( vector<double> { 5, 1, 1, 1, 5, 5, 3, 1, 2, 0, 2, 1, 2, 1 } );
+
+	// Setup: Father
+	auto father = GetTree( vector<double> { 5, 2, 1, 2, 0, 5, 1, 2, 2, 1, 2, 1, 2, 1 } );
+
+	// Execute
+	auto child = Breed(mother, father);
+	Mutate(child, vector<double> {10, 1, 2, 2} );
+	auto childCode = child->ToString();
+
+	// Confirm
+	ASSERT_EQ(childCode, "(p[2] + ((1.0 / p[1]) * (-1 * 5)))");
+
+	// Teardown
+	delete mother; delete father; delete child;
+}
+
 //--------------------------------------------------
 // Utility Methods
 //--------------------------------------------------
