@@ -11,25 +11,24 @@
 #include <iostream>
 using namespace std;
 
-#include <MathGPLib/Grammar/RandomGenerator.h>
+#include "RandomGenerator.h"
 
-namespace NVL_Test
+namespace NVL_AI
 {
-	class TestGenerator : public RandomGenerator
+	class TreeEncoder : public RandomGenerator
 	{
 	private:
 		vector<double> _values;
 		int _position;
 	public:
-		TestGenerator(const vector<double>& values) : _values(values), _position(0) {} 
+		TreeEncoder(const vector<double>& values) : _values(values), _position(0) {} 
 
 		virtual void Initializer() override {}
 		
 		virtual int Get(int min, int max) override 
-		{ 
-			auto result = _values[_position++];
-			if (result < min || result > max) throw runtime_error("Value is out of range");
-			return result; 
+		{  
+			if (_position > _values.size()) throw runtime_error("Encoding does not define a complete tree");
+			return _values[_position++]; 
 		}
 	};
 }

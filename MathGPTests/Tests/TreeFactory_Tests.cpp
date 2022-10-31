@@ -8,10 +8,9 @@
 
 #include <gtest/gtest.h>
 
+#include <MathGPLib/Grammar/TreeEncoder.h>
 #include <MathGPLib/Grammar/TreeFactory.h>
 using namespace NVL_AI;
-
-#include "../Helpers/TestGenerator.h"
 
 //--------------------------------------------------
 // Function Prototypes
@@ -30,7 +29,7 @@ NVL_AI::Node * Mutate(NVL_AI::Node * tree, const vector<double>& code);
 TEST(TreeFactory_Test, test_generation)
 {
 	// Setup: Main Players
-	auto generator = new NVL_Test::TestGenerator( vector<double> { 3, 3, 5, 2, 1, 1, 5, 6, 1, 1, 2, 0, 2, 1, 2, 2 } );
+	auto generator = new NVL_AI::TreeEncoder( vector<double> { 3, 3, 5, 2, 1, 1, 5, 6, 1, 1, 2, 0, 2, 1, 2, 2 } );
 	auto factory = NVL_AI::TreeFactory(generator, 3, 3, new NVLib::Range<int>(0, 5));
 
 	// Defines the expected result
@@ -141,7 +140,7 @@ TEST(TreeFactory_Test, test_clone_mutation)
  */
 NVL_AI::Node * GetTree(const vector<double>& code) 
 {
-	auto generator = new NVL_Test::TestGenerator(code);
+	auto generator = new NVL_AI::TreeEncoder(code);
 	auto factory = NVL_AI::TreeFactory(generator, 3, 3, new NVLib::Range<int>(0, 5));
 	return factory.GetRandomTree();
 }
@@ -155,7 +154,7 @@ NVL_AI::Node * GetTree(const vector<double>& code)
 NVL_AI::Node * Breed(NVL_AI::Node * mother, NVL_AI::Node * father)
 {
 	auto code = vector<double> { 0, 1, 0, 1, 0, 1, 1, 5 };
-	auto generator = new NVL_Test::TestGenerator(code);
+	auto generator = new NVL_AI::TreeEncoder(code);
 	auto factory = NVL_AI::TreeFactory(generator, 3, 3, new NVLib::Range<int>(0, 5));
 	return factory.Breed(mother, father);
 }
@@ -168,7 +167,7 @@ NVL_AI::Node * Breed(NVL_AI::Node * mother, NVL_AI::Node * father)
  */
 NVL_AI::Node * Mutate(NVL_AI::Node * tree, const vector<double>& code) 
 {
-	auto generator = new NVL_Test::TestGenerator(code);
+	auto generator = new NVL_AI::TreeEncoder(code);
 	auto factory = NVL_AI::TreeFactory(generator, 3, 3, new NVLib::Range<int>(0, 5));
 	return factory.Mutate(tree, 0.4);
 }
