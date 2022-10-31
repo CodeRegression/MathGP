@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<class>
+
+    <namespace>NVL_AI</namespace>
+    <solution>MathGPLib</solution>
+    <name>TreeUtils</name>
+    <description>A set of utilities for processing a tree</description>
+
+    <includes>
+        <include name="iostream" namespace="std" local="false" />
+        <include name="Node.h" local="true" />
+    </includes>
+
+    <methods>
+
+        <!-- Generate Code -->
+        <method section="Code" modifiers="static" access="public" return="string" name="GetCode" description="Generate the code for a tree" inline="false">
+            <parameter type="Node *" name="tree" description="The tree that we are generating the code from" />
+        </method>    
+
+        <!-- Evaluate -->
+        <method section="Evaluate" modifiers="static" access="public" return="double" name="Evaluate" description="Evaluate the tree wrt a set of inputs" inline="false">
+            <parameter type="Node *" name="tree" description="The tree that we are evaluating" />
+            <parameter type="vector<double>&" name="params" description="The parameters that we are using for the evaluation" />
+        </method>    
+
+    </methods>
+
+    <tests>
+        <test name="test_code_generation" description="Verify that the code generation is as expected" exception="false" />
+        <test name="test_evaluation" description="Verify that the evaluation of expressions is as expected" exception="false" />
+    </tests>
+
+</class>

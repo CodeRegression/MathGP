@@ -31,7 +31,9 @@ add_executable (MathGPTests
 	Tests/NegateNode_Tests.cpp
 	Tests/InvertNode_Tests.cpp
 	Tests/BFTraversal_Tests.cpp
+	Tests/TreeUtils_Tests.cpp
 )
+
 
 
 
