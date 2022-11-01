@@ -10,6 +10,21 @@
 using namespace NVL_AI;
 
 //--------------------------------------------------
+// Constructor and Terminator
+//--------------------------------------------------
+
+/**
+ * @brief Main Constructor
+ * @param scoreFinder Defines the logic to find the score
+ * @param mutator Defines the logic to find the mutator
+ * @param factory The current tree factory
+ */
+CandidateFactory::CandidateFactory(ScoreFinderBase * scoreFinder, MutationBase * mutator, TreeFactory * factory) : CandidateFactoryBase(scoreFinder, mutator), _factory(factory)
+{
+    // Extra initialization comes here
+}
+
+//--------------------------------------------------
 // Perform Random Generation
 //--------------------------------------------------
 
@@ -20,7 +35,8 @@ using namespace NVL_AI;
  */
 CandidateBase * CandidateFactory::PerformRandomGeneration(int id)
 {
-    throw runtime_error("Not Implemented");
+    auto newTree = _factory->GetRandomTree();
+    return new Candidate(id, newTree);
 }
 
 //--------------------------------------------------
@@ -36,5 +52,10 @@ CandidateBase * CandidateFactory::PerformRandomGeneration(int id)
  */
 CandidateBase * CandidateFactory::PerformBreedGeneration(int id, CandidateBase * parent1, CandidateBase * parent2) 
 {
-    throw runtime_error("Not Implemented");
+    auto mother = ((Candidate *) parent1)->GetTree();
+    auto father = ((Candidate *) parent2)->GetTree();
+
+    auto newTree = _factory->Breed(mother, father);
+
+    return new Candidate(id, newTree);
 }

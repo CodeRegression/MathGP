@@ -19,7 +19,12 @@ namespace NVL_AI
 {
 	class Mutation : public MutationBase
 	{
+	private:
+		double _probability;
+		TreeFactory * _factory;
     public:
+		Mutation(TreeFactory * factory, double probability);
+	
         virtual void Mutate(CandidateBase * candidate) override;
 	};
 }

@@ -33,5 +33,6 @@ namespace NVL_AI
         virtual CandidateBase * Clone() override;
 
         inline NVL_AI::Node * GetTree() { return _tree; }
+        inline void SetTree(NVL_AI::Node * tree) { _tree = tree; }
     };
 }

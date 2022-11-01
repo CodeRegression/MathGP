@@ -14,10 +14,26 @@ using namespace NVL_AI;
 //--------------------------------------------------
 
 /**
+ * @brief Main Constructor
+ * @param factory The factory that we are working with
+ * @param probability The associated probability
+ */
+Mutation::Mutation(TreeFactory * factory, double probability) : _factory(factory), _probability(probability)
+{
+    // Extra initialization can go here
+}
+
+//--------------------------------------------------
+// Mutate
+//--------------------------------------------------
+
+/**
  * @brief Add the logic to perform mutation
  * @param candidate The candidate that we are mutating
  */
 void Mutation::Mutate(CandidateBase * candidate)
 {
-    throw runtime_error("Not Implemented");
+    auto alias = (Candidate *) candidate;
+    auto tree = _factory->Mutate(alias->GetTree(), _probability);
+    alias->SetTree(tree);
 }

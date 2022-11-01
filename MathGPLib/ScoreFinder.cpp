@@ -14,13 +14,26 @@ using namespace NVL_AI;
 //--------------------------------------------------
 
 /**
+ * @brief Main Constructor
+ * @param testCases The test cases that we are going to test against
+ */
+ScoreFinder::ScoreFinder(Mat& testCases) : _testCases(testCases)
+{
+    // Extra initialization can go here
+}
+
+//--------------------------------------------------
+// GetScore
+//--------------------------------------------------
+
+/**
  * @brief Calculate the score associated with a given candidate
  * @param candidate The candidate that we are calculating the score for
  * @return double The score as a double
  */
 double ScoreFinder::GetScore(CandidateBase * candidate)
 {
-    throw runtime_error("No Implementation");
+    return ScoreUtils::Evaluate(_testCases, ((Candidate*) candidate)->GetTree());
 }
 
 //--------------------------------------------------
@@ -35,5 +48,6 @@ double ScoreFinder::GetScore(CandidateBase * candidate)
  */
 bool ScoreFinder::ProblemSolved(CandidateBase * candidate)
 {
-    throw runtime_error("No Implementation");
+    auto score = ScoreUtils::Evaluate(_testCases, ((Candidate*) candidate)->GetTree());
+    return abs(score) < 1e-4;
 }
