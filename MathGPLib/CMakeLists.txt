@@ -23,6 +23,7 @@ add_library (MathGPLib STATIC
 	Grammar/TreeUtils.cpp
 	Grammar/RandomGenerator.cpp
 	Grammar/TreeFactory.cpp
+	Grammar/ScoreUtils.cpp
 	ArgUtils.cpp
 	Candidate.cpp
 	CandidateFactory.cpp

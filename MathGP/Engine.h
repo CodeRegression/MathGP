@@ -15,6 +15,8 @@ using namespace std;
 
 #include <MathGPLib/ArgUtils.h>
 #include <MathGPLib/Logger.h>
+#include <MathGPLib/Grammar/ScoreUtils.h>
+#include <MathGPLib/Grammar/TreeUtils.h>
 
 namespace NVL_App
 {
@@ -28,5 +30,7 @@ namespace NVL_App
 		~Engine();
 
 		void Run();
+	private:
+		inline Logger& Log() { return *_logger; } 
 	};
 }
