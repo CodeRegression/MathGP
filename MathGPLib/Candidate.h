@@ -12,6 +12,10 @@
 #include <iostream>
 using namespace std;
 
+#include "Grammar/Node.h"
+#include "Grammar/TreeUtils.h"
+#include "Grammar/TreeFactory.h"
+
 #include <GeneticLib/Model/CandidateBase.h>
 
 namespace NVL_AI
@@ -19,12 +23,15 @@ namespace NVL_AI
 	class Candidate : public CandidateBase
 	{
 	private:
-        // TODO: Add in values
+        NVL_AI::Node * _tree;
     public:
-		Candidate(int id) : CandidateBase(id, 0) {}
+		Candidate(int id, NVL_AI::Node * tree);
+        ~Candidate();
 
         virtual bool Equals(CandidateBase * candidate) override;
         virtual string ToString() override;
         virtual CandidateBase * Clone() override;
+
+        inline NVL_AI::Node * GetTree() { return _tree; }
     };
 }

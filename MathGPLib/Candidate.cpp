@@ -1,5 +1,5 @@
 //--------------------------------------------------
-// Implemenation of the candidate
+// Implementation of the candidate
 //
 // @author: Wild Boar
 //
@@ -8,6 +8,28 @@
 
 #include "Candidate.h"
 using namespace NVL_AI;
+
+//--------------------------------------------------
+// Constructor and Terminator
+//--------------------------------------------------
+
+/**
+ * @brief Main constructor
+ * @param id The candidate identifier
+ * @param tree The tree that we are getting values for
+ */
+Candidate::Candidate(int id, NVL_AI::Node * tree) : CandidateBase(id, 0), _tree(tree)
+{
+    // Extra implementation can go here
+}
+
+/**
+ * @brief Main Terminator
+ */
+Candidate::~Candidate() 
+{
+    delete _tree;
+}
 
 //--------------------------------------------------
 // Equality Check
@@ -21,7 +43,9 @@ using namespace NVL_AI;
  */
 bool Candidate::Equals(CandidateBase * candidate)
 {
-    throw runtime_error("Not Implemented");
+    auto code_1 = _tree->ToString();
+    auto code_2 = ((Candidate *)candidate)->_tree->ToString();
+    return code_1 == code_2;
 }
 
 //--------------------------------------------------
@@ -34,7 +58,7 @@ bool Candidate::Equals(CandidateBase * candidate)
  */
 string Candidate::ToString() 
 {
-    throw runtime_error("Not Implemented");
+    return _tree->ToString();
 }
 
 //--------------------------------------------------
@@ -47,5 +71,8 @@ string Candidate::ToString()
  */
 CandidateBase * Candidate::Clone()
 {
-     throw runtime_error("Not Implemented");
+    auto id = GetId();
+    auto encoding = vector<double>(); _tree->Evaluate(encoding);
+    auto newTree = TreeUtils::BuildTreeFromEncoding(encoding, INT_MAX, INT_MAX, new NVLib::Range<int>(0, 1));
+    return new Candidate(id, newTree);
 }
