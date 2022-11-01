@@ -15,6 +15,12 @@ using namespace std;
 
 #include <MathGPLib/ArgUtils.h>
 #include <MathGPLib/Logger.h>
+
+#include <MathGPLib/CandidateFactory.h>
+#include <MathGPLib/ScoreFinder.h>
+#include <MathGPLib/Mutation.h>
+
+#include <MathGPLib/Grammar/TreeFactory.h>
 #include <MathGPLib/Grammar/ScoreUtils.h>
 #include <MathGPLib/Grammar/TreeUtils.h>
 
@@ -25,6 +31,8 @@ namespace NVL_App
 	private:
 		NVLib::Parameters * _parameters;
 		Logger* _logger;
+		NVL_AI::TreeFactory * _treeFactory;
+		NVL_AI::CandidateFactory * _candidateFactory;
 	public:
 		Engine(Logger* logger, NVLib::Parameters * parameters);
 		~Engine();

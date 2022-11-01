@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
 <opencv_storage>
     <arff>"Input/problem.arff"</arff>
+    <depth_limit>"5"</depth_limit>
+    <const_min>"-5"</const_min>
+    <const_max>"5"</const_max>
+    <mutation>"0.4"</mutation>
 </opencv_storage>

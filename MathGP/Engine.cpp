@@ -21,6 +21,22 @@ using namespace NVL_App;
 Engine::Engine(Logger* logger, NVLib::Parameters* parameters) 
 {
     _logger = logger; _parameters = parameters;
+    auto generator = new NVL_AI::RandomGenerator(); generator->Initialize();
+
+    auto problemPath = ArgUtils::GetString(parameters, "arff");
+    auto depthLimit = ArgUtils::GetInteger(parameters, "depth_limit");
+    auto constMin = ArgUtils::GetInteger(parameters, "const_min");
+    auto constMax = ArgUtils::GetInteger(parameters, "const_max");
+    auto mProbability = ArgUtils::GetDouble(parameters, "mutation");
+
+    auto fieldNames = vector<string>(); Mat testCases = NVL_AI::ScoreUtils::LoadARFF(problemPath, fieldNames);
+    
+    _treeFactory = new NVL_AI::TreeFactory(generator, depthLimit, fieldNames.size(), new NVLib::Range(constMin, constMax));
+
+    auto scoreFinder = new NVL_AI::ScoreFinder(testCases);
+    auto mutator = new NVL_AI::Mutation(_treeFactory, mProbability);
+
+    _candidateFactory = new NVL_AI::CandidateFactory(scoreFinder, mutator, _treeFactory); 
 }
 
 /**
@@ -28,7 +44,7 @@ Engine::Engine(Logger* logger, NVLib::Parameters* parameters)
  */
 Engine::~Engine() 
 {
-    delete _parameters;
+    delete _parameters; delete _candidateFactory; delete _treeFactory;
 }
 
 //--------------------------------------------------
@@ -40,17 +56,5 @@ Engine::~Engine()
  */
 void Engine::Run()
 {
-    Log() << "Loading problem file" << Logger::End();
-    auto path = ArgUtils::GetString(_parameters, "arff");
-    auto fieldNames = vector<string>();
-    Mat testCases = NVL_AI::ScoreUtils::LoadARFF(path, fieldNames);
 
-    Log() << "Building a solution tree" << Logger::End();
-    auto encoding = vector<double> { 5, 2, 5, 3, 1, 2, 2, 1, 2, 0, 1, 2, 1 };
-    auto solution = NVL_AI::TreeUtils::BuildTreeFromEncoding(encoding, 100, fieldNames.size(), new NVLib::Range<int>(-5, 5));
-    Log() << "Solution Tree: " << solution->ToString() << Logger::End();
-
-    Log() << "Get the score for the solution" << Logger::End();
-    auto score = NVL_AI::ScoreUtils::Evaluate(testCases, solution);
-    Log() << "Final Score: " << score << Logger::End();
 }
