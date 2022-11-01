@@ -231,7 +231,7 @@ NVL_AI::Node * TreeFactory::GetRandomLeafNode(int id)
 	}
 	else if (nodeId == 2)
 	{
-		auto index = _generator->Get(0, _inputCount);
+		auto index = _generator->Get(0, _inputCount - 1);
 		return new LiteralNode(id, index);
 	}
 	else throw runtime_error("Unknown Leaf Node");

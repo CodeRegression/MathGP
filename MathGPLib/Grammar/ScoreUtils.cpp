@@ -95,7 +95,7 @@ double ScoreUtils::Evaluate(Mat testCases, Node * solution)
 		}
 
 		auto actual = solution->Evaluate(params);
-		error += abs(actual - expected);
+		error += -abs(actual - expected);
 	}
 
 	return error;
