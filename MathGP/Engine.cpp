@@ -56,5 +56,15 @@ Engine::~Engine()
  */
 void Engine::Run()
 {
+    Log() << "Loading Parameters" << Logger::End();
+    auto populationSize = ArgUtils::GetInteger(_parameters, "population");
+    auto sampleSize = ArgUtils::GetInteger(_parameters, "sample");
+    auto iterationCount = ArgUtils::GetInteger(_parameters, "iteration"); 
 
+    Log() << "Creating a runner" << Logger::End();
+    auto runner = NVL_AI::GeneticRunner(_candidateFactory, populationSize, sampleSize);
+    runner.SetLogger(new NVL_AI::GeneticLogger());
+
+    // Launch the search
+    runner.Run(iterationCount);
 }

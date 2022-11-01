@@ -5,4 +5,7 @@
     <const_min>"-5"</const_min>
     <const_max>"5"</const_max>
     <mutation>"0.4"</mutation>
+    <population>"1000"</population>
+    <sample>"15"</sample>
+    <iteration>"30"</iteration>
 </opencv_storage>

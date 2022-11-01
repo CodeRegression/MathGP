@@ -72,7 +72,7 @@ string Candidate::ToString()
 CandidateBase * Candidate::Clone()
 {
     auto id = GetId();
-    auto encoding = vector<double>(); _tree->Evaluate(encoding);
+    auto encoding = vector<double>(); TreeUtils::GetTreeEncoding(_tree, encoding);
     auto newTree = TreeUtils::BuildTreeFromEncoding(encoding, INT_MAX, INT_MAX, new NVLib::Range<int>(0, 1));
     return new Candidate(id, newTree);
 }

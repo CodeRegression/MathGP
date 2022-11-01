@@ -13,6 +13,8 @@ using namespace std;
 
 #include <NVLib/Logger.h>
 
+#include <GeneticLib/Utility/GeneticRunner.h>
+
 #include <MathGPLib/ArgUtils.h>
 #include <MathGPLib/Logger.h>
 

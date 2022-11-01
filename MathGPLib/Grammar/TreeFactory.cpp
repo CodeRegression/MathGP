@@ -164,7 +164,7 @@ NVL_AI::Node * TreeFactory::Mutate(NVL_AI::Node * tree, double threshold)
 	while (node != nullptr) 
 	{ 
 		node = traverse.Next(); 
-		nodes.push_back(node); 
+		if (node != nullptr) nodes.push_back(node); 
 	}
 
 	// Select the node to mutate
