@@ -20,7 +20,7 @@ namespace NVL_AI
 	public:
 		RandomGenerator();
 
-		virtual void Initializer();
+		virtual void Initialize();
 		virtual int Get(int min, int max);
 	};
 }

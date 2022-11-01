@@ -81,9 +81,32 @@ TEST(TreeUtils_Test, test_evaluation)
 }
 
 /**
+ * @brief Test a controlled encoding
+ */
+TEST(TreeUtils_Test, test_encoding_1) 
+{
+	// Generate a tree
+	auto encoding_1 = vector<double> { 5, 3, 5, 4, 1, 2, 2, 5, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2 };
+	auto tree_1 = TreeUtils::BuildTreeFromEncoding(encoding_1, 30, 3, new NVLib::Range(0, 5));
+	auto code_1 = tree_1->ToString();
+
+	// Create a clone from the encoding
+	auto encoding_2 = vector<double>(); TreeUtils::GetTreeEncoding(tree_1, encoding_2);
+	auto tree_2 = TreeUtils::BuildTreeFromEncoding(encoding_2, 30, 3, new NVLib::Range(0, 5));
+	auto code_2 = tree_2->ToString();
+
+	// Comparisons
+	ASSERT_EQ(code_1, "(((1 - p[2]) / 1) * p[2])");
+	ASSERT_EQ(code_1, code_2);
+	ASSERT_EQ(encoding_1.size(), encoding_2.size());
+
+	for (auto i = 0; i < encoding_1.size(); i++) ASSERT_EQ(encoding_1[i], encoding_2[i]);
+}
+
+/**
  * @brief Add the logic to test the encoding functionality
  */
-TEST(TreeUtils_Test, test_encoding) 
+TEST(TreeUtils_Test, test_encoding_2) 
 {
 	// Create a random tree
 	auto generator = new RandomGenerator();
@@ -110,18 +133,24 @@ TEST(TreeUtils_Test, test_encoding)
  */
 TEST(TreeUtils_Test, test_persistence) 
 {
-	FAIL() << "Not Implemented";
-
 	// Create a population of random nodes
+	auto generator = new RandomGenerator(); generator->Initialize();
+	auto factory = TreeFactory(generator, 3, 3, new NVLib::Range(0, 5));
+	auto population = vector<NVL_AI::Node *>(); for (auto i = 0; i < 500; i++) population.push_back(factory.GetRandomTree());
 
 	// Extract the code strings
+	auto codeList = vector<string>(); for (auto& node : population) codeList.push_back(node->ToString());
 
 	// "Save" the population to a writer
+	auto readwrite = stringstream(); TreeUtils::SavePopulation(readwrite, population);
 
 	// Clear the current population
+	for (auto node : population) delete node; population.clear();
 
 	// "Load" the population from a reader
+	TreeUtils::LoadPopulation(readwrite, population);
 
 	// Verify that all the code strings are still the same
-
+	ASSERT_EQ(population.size(), codeList.size());
+	for (auto i = 0; i < population.size(); i++) ASSERT_EQ(codeList[i], population[i]->ToString());
 }

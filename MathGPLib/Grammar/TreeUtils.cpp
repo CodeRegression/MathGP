@@ -92,7 +92,12 @@ NVL_AI::Node * TreeUtils::BuildTreeFromEncoding(const vector<double>& encoding, 
  */
 void TreeUtils::SavePopulation(ostream& writer, vector<Node *>& population) 
 {
-	throw runtime_error("Not Implemented");
+	for (auto node : population) 
+	{
+		auto encoding = vector<double>(); GetTreeEncoding(node, encoding);
+		writer << encoding.size();
+		for (auto& value : encoding) writer << " " << value; writer << endl;
+	}
 }
 
 /**
@@ -102,5 +107,23 @@ void TreeUtils::SavePopulation(ostream& writer, vector<Node *>& population)
  */
 void TreeUtils::LoadPopulation(istream& reader, vector<Node *>& population) 
 {
-	throw runtime_error("Not Implemented");
+	// Make sure that the population is clear
+	population.clear();
+
+	// Loop thru the entries and add new elements
+	while (true) 
+	{
+		int size; reader >> size;
+		if (!reader.good()) break;
+
+		auto encoding = vector<double>();
+		for (auto i = 0; i < size; i++) 
+		{
+			int value; reader >> value;
+			encoding.push_back(value);
+		}
+
+		auto node = BuildTreeFromEncoding(encoding, 100, 100, new NVLib::Range(0, 1));
+		population.push_back(node);
+	}
 }

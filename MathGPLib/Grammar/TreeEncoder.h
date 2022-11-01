@@ -23,7 +23,7 @@ namespace NVL_AI
 	public:
 		TreeEncoder(const vector<double>& values) : _values(values), _position(0) {} 
 
-		virtual void Initializer() override {}
+		virtual void Initialize() override {}
 		
 		virtual int Get(int min, int max) override 
 		{  

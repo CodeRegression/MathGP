@@ -22,13 +22,13 @@ RandomGenerator::RandomGenerator()
 }
 
 //--------------------------------------------------
-// Initializer
+// Initialize
 //--------------------------------------------------
 
 /**
  * @brief An initializer for setting up the random generator
  */
-void RandomGenerator::Initializer()
+void RandomGenerator::Initialize()
 {
 	NVLib::RandomUtils::TimeSeedRandomNumbers();
 }

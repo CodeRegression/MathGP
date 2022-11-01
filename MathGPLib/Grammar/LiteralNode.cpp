@@ -84,5 +84,5 @@ Node * LiteralNode::Clone(int id)
  */
 void LiteralNode::UpdateEncoding(vector<double>& code) 
 {
-	code.push_back(1); code.push_back(2);
+	code.push_back(1); code.push_back(2); code.push_back(_index);
 }
