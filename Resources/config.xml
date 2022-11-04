@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
 <opencv_storage>
-    <arff>"Input/problem.arff"</arff>
-    <depth_limit>"5"</depth_limit>
+    <arff>"Input/data.arff"</arff>
+    <depth_limit>"100"</depth_limit>
     <const_min>"-5"</const_min>
     <const_max>"5"</const_max>
     <mutation>"0.4"</mutation>
-    <population>"1000"</population>
+    <population>"10000"</population>
     <sample>"15"</sample>
-    <iteration>"30"</iteration>
+    <iteration>"500"</iteration>
+    <server>"192.168.1.130"</server>
+    <port>"80"</port>
+    <machine>"192.168.1.109"</machine>
 </opencv_storage>

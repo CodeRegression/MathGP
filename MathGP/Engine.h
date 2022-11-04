@@ -17,6 +17,7 @@ using namespace std;
 
 #include <MathGPLib/ArgUtils.h>
 #include <MathGPLib/Logger.h>
+#include <MathGPLib/DashLogger.h>
 
 #include <MathGPLib/CandidateFactory.h>
 #include <MathGPLib/ScoreFinder.h>
@@ -32,9 +33,10 @@ namespace NVL_App
 	{
 	private:
 		NVLib::Parameters * _parameters;
-		Logger* _logger;
+		Logger* _logger; NVL_AI::CodeDash * _codeDash;
 		NVL_AI::TreeFactory * _treeFactory;
 		NVL_AI::CandidateFactory * _candidateFactory;
+		string _machine;
 	public:
 		Engine(Logger* logger, NVLib::Parameters * parameters);
 		~Engine();

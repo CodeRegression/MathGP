@@ -29,4 +29,7 @@ add_library (MathGPLib STATIC
 	CandidateFactory.cpp
 	Mutation.cpp
 	ScoreFinder.cpp
+	Socket.cpp
+	CodeDash.cpp
+	DashLogger.cpp
 )

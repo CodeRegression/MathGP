@@ -59,6 +59,7 @@ double DivideNode::Evaluate(vector<double>& params)
 {
 	auto value1 = GetChild1()->Evaluate(params);
 	auto value2 = GetChild2()->Evaluate(params);
+	if (value2 == 0) return 0;
 	return value1 / value2;
 }
 

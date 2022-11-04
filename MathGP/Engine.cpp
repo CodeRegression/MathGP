@@ -29,6 +29,12 @@ Engine::Engine(Logger* logger, NVLib::Parameters* parameters)
     auto constMax = ArgUtils::GetInteger(parameters, "const_max");
     auto mProbability = ArgUtils::GetDouble(parameters, "mutation");
 
+    auto server = ArgUtils::GetString(parameters, "server");
+    auto port = ArgUtils::GetString(parameters, "port");
+    _machine = ArgUtils::GetString(parameters, "machine");
+
+    _codeDash = new NVL_AI::CodeDash(server, port);
+
     auto fieldNames = vector<string>(); Mat testCases = NVL_AI::ScoreUtils::LoadARFF(problemPath, fieldNames);
     
     _treeFactory = new NVL_AI::TreeFactory(generator, depthLimit, fieldNames.size(), new NVLib::Range(constMin, constMax));
@@ -44,7 +50,7 @@ Engine::Engine(Logger* logger, NVLib::Parameters* parameters)
  */
 Engine::~Engine() 
 {
-    delete _parameters; delete _candidateFactory; delete _treeFactory;
+    delete _parameters; delete _candidateFactory; delete _treeFactory; delete _codeDash;
 }
 
 //--------------------------------------------------
@@ -61,9 +67,13 @@ void Engine::Run()
     auto sampleSize = ArgUtils::GetInteger(_parameters, "sample");
     auto iterationCount = ArgUtils::GetInteger(_parameters, "iteration"); 
 
+    Log() << "Creating a session" << Logger::End();
+    auto sessionId = _codeDash->CreateSession("MP_1", "FIT_0000", _machine);
+    Log() << "Created session: " << sessionId << Logger::End();
+
     Log() << "Creating a runner" << Logger::End();
     auto runner = NVL_AI::GeneticRunner(_candidateFactory, populationSize, sampleSize);
-    runner.SetLogger(new NVL_AI::GeneticLogger());
+    runner.SetLogger(new NVL_AI::DashLogger(sessionId, _codeDash));
 
     // Launch the search
     runner.Run(iterationCount);
