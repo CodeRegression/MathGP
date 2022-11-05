@@ -303,6 +303,7 @@ string CodeDash::Escape(const string& value)
 		else if (character == ';') result << "%3B";
 		else if (character == '<') result << "%3C";
 		else if (character == '>') result << "%3E";
+		else if (character == '+') result << "%2B";
 		else result << character;
 	}
 
