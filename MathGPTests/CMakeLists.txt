@@ -33,6 +33,8 @@ add_executable (MathGPTests
 	Tests/BFTraversal_Tests.cpp
 	Tests/TreeUtils_Tests.cpp
 	Tests/TreeFactory_Tests.cpp
+	Tests/Consistency_Tests.cpp
+	Tests/Generated_Tests.cpp
 )
 
 # Add link libraries

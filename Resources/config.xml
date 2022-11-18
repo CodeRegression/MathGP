@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <opencv_storage>
-    <arff>"Input/cpu.arff"</arff>
-    <depth_limit>"100"</depth_limit>
-    <const_min>"-2"</const_min>
-    <const_max>"2"</const_max>
+    <arff>"Input/image.arff"</arff>
+    <depth_limit>"200"</depth_limit>
+    <const_min>"-1"</const_min>
+    <const_max>"1"</const_max>
     <mutation>"0.4"</mutation>
     <population>"5000"</population>
     <sample>"15"</sample>

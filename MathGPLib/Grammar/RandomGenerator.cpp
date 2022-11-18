@@ -45,5 +45,13 @@ void RandomGenerator::Initialize()
  */
 int RandomGenerator::Get(int min, int max)
 {
-	return NVLib::RandomUtils::GetInteger(NVLib::Range<int>(min, max + 1));
+	if (min > max) throw runtime_error("Parameters are in the wrong order!");
+	auto range = (max - min) + 1;
+	auto number = rand() % range;
+	auto result = number + min;
+	if (result < min || result > max) 
+	{
+		throw runtime_error("Something broke!");
+	}
+	return result;
 }

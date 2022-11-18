@@ -226,15 +226,19 @@ NVL_AI::Node * TreeFactory::GetRandomLeafNode(int id)
 
 	if (nodeId == 1) 
 	{
-		auto value = _generator->Get(_constantRange->GetMin(), _constantRange->GetMax());
-		return new ConstantNode(id, value);
+		auto value = 0.0;
+		while (value == 0) value = _generator->Get(_constantRange->GetMin() * 100, _constantRange->GetMax() * 100);
+		return new ConstantNode(id, value / 100.0);
 	}
 	else if (nodeId == 2)
 	{
 		auto index = _generator->Get(0, _inputCount - 1);
 		return new LiteralNode(id, index);
 	}
-	else throw runtime_error("Unknown Leaf Node");
+	else 
+	{
+		throw runtime_error("Unknown Leaf Node");
+	}
 }
 
 /**

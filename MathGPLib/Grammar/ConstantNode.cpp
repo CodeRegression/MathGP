@@ -42,7 +42,8 @@ string ConstantNode::GetType()
  */
 string ConstantNode::ToString()
 {
-	return NVLib::StringUtils::Int2String(_value);
+	auto result = stringstream(); result << setprecision(3) << fixed << _value;
+	return result.str();
 }
 
 //--------------------------------------------------
@@ -83,5 +84,5 @@ Node * ConstantNode::Clone(int id)
  */
 void ConstantNode::UpdateEncoding(vector<double>& code) 
 {
-	code.push_back(1); code.push_back(1); code.push_back(_value);
+	code.push_back(1); code.push_back(1); code.push_back(int(_value * 100));
 }
