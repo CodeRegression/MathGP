@@ -58,7 +58,7 @@ string InvertNode::ToString()
 double InvertNode::Evaluate(vector<double>& params)
 {
 	auto value = GetChild()->Evaluate(params);
-	if (value == 0) return 0;
+	if (value == 0) return 1e6;
 	return 1.0 / value;
 }
 

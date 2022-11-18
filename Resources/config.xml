@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <opencv_storage>
-    <arff>"Input/data.arff"</arff>
+    <arff>"Input/cpu.arff"</arff>
     <depth_limit>"100"</depth_limit>
-    <const_min>"-5"</const_min>
-    <const_max>"5"</const_max>
+    <const_min>"-2"</const_min>
+    <const_max>"2"</const_max>
     <mutation>"0.4"</mutation>
-    <population>"10000"</population>
+    <population>"5000"</population>
     <sample>"15"</sample>
     <iteration>"500"</iteration>
     <server>"192.168.1.130"</server>
